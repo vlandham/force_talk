@@ -12,7 +12,7 @@ h2. Slide Ideas
 ** Collision Detection
 ** Bubble Cloud
 
-* 
+* Nodes & Edges
 
 h2. Network Ideas
 
@@ -53,6 +53,8 @@ h3. network editors
 
 "draw editor":http://bl.ocks.org/4370043
 
+"strange one with boxes":http://hci-user-advocate.blogspot.com/2012/06/interactive-d3-experiments.html
+
 h3. Grided Forced Layout
 
 "grid layout":http://moritzstefaner.github.com/gridexperiments/
@@ -91,5 +93,16 @@ frictionChanger.onChange(function(value) {
 </pre>
 
 looks like it uses "dat-gui":http://code.google.com/p/dat-gui/
+
+h3. bubbles and images
+
+"images on bubbles":http://bl.ocks.org/950642
+
+
+h3. Edge styling
+
+"fancy curved tutorial":http://blog.stephenboak.com/2012/06/15/d3-flow-vis-tutorial.html
+
+"widths of edges":http://www.jasondavies.com/random-arboretum/
 
 
