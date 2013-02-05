@@ -51,6 +51,8 @@ h3. Location and force layouts
 
 h3. network editors
 
+"mikes drawer":http://bl.ocks.org/929623
+
 "draw editor":http://bl.ocks.org/4370043
 
 "strange one with boxes":http://hci-user-advocate.blogspot.com/2012/06/interactive-d3-experiments.html
