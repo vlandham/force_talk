@@ -1,0 +1,95 @@
+
+h2. Slide Ideas
+
+* Intro to D3 Force "api":https://github.com/mbostock/d3/wiki/Force-Layout
+** One bubble
+** multiple bubbles - "this demo":http://bl.ocks.org/1062383 has fun fly in
+** gravity
+** 
+
+* Just Nodes
+** Bubble Chart - NYT budget
+** Collision Detection
+** Bubble Cloud
+
+* 
+
+h2. Network Ideas
+
+h3. Lynn's delicious
+
+"bookmarks":https://delicious.com/arnicas/networks+d3
+
+h3. breaking rank
+
+"Breaking rank - parliment":http://www.theglobeandmail.com/news/politics/breaking-rank-how-often-do-mps-vote-against-their-own-party/article8141646/
+
+h3. collision detection
+
+"mikes talk":http://mbostock.github.com/d3/talk/20111018/collision.html
+
+h3. arboretum
+
+"ascession frequency":http://arbonauts.nafster.com/site/project-count-ages.html
+
+* interesting pop-in effect
+* large spectrum of bubble sizes
+
+h3. Bubble cloud
+
+"my version":http://vallandingham.me/bubble_cloud/
+
+h3. Custom Gravity
+
+"custom gravity":http://bl.ocks.org/2024456
+
+h3. Location and force layouts
+
+"force directed states":http://mbostock.github.com/d3/talk/20111018/force-states.html
+
+"racial divide":http://vallandingham.me/visualizing_the_racial_divide.html
+
+h3. network editors
+
+"draw editor":http://bl.ocks.org/4370043
+
+h3. Grided Forced Layout
+
+"grid layout":http://moritzstefaner.github.com/gridexperiments/
+
+* Moritz
+* great idea
+* subway map?
+
+h3. Other bubles
+
+"NYT budget":http://www.nytimes.com/interactive/2012/02/13/us/politics/2013-budget-proposal-graphic.html
+
+"hackernews":http://fanfarefantastique.com/vishna/#newest
+
+h3. multiple sclerosis bubblechart
+
+"bubble chart":http://www.mgrafit.com/00-projects/proj01-MSTrials/MStrials.html
+
+* uses similar code as NYT visualization
+* lots of custom locations
+
+h3. Octocat force layout
+
+"blocks link":http://bl.ocks.org/4527513
+
+"Gist":https://gist.github.com/christophermanning/4527513
+
+* has controls to modify components of force
+
+<pre>
+var frictionChanger = fl.add(config, "friction", 0, 1)
+frictionChanger.onChange(function(value) {
+  force.friction(value)
+  force.start()
+})
+</pre>
+
+looks like it uses "dat-gui":http://code.google.com/p/dat-gui/
+
+
