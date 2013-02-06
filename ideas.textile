@@ -11,8 +11,13 @@ h2. Slide Ideas
 ** Bubble Chart - NYT budget
 ** Collision Detection
 ** Bubble Cloud
+** Custom Nodes
 
 * Nodes & Edges
+** Basic force directed
+** edge styles
+
+* Moving between layouts
 
 h2. Network Ideas
 
@@ -38,6 +43,8 @@ h3. arboretum
 h3. Bubble cloud
 
 "my version":http://vallandingham.me/bubble_cloud/
+
+"shape of my library":http://shapeofmylibrary.com/ - also featured by @alignedleft ?
 
 h3. Custom Gravity
 
@@ -95,6 +102,20 @@ frictionChanger.onChange(function(value) {
 </pre>
 
 looks like it uses "dat-gui":http://code.google.com/p/dat-gui/
+
+h3. visual complexity
+
+"website":http://www.visualcomplexity.com/vc/
+
+"NYC subway times":http://www.visualcomplexity.com/vc/project_details.cfm?id=757&index=757&domain=
+
+* maybe use with grided layouts?
+
+"circle of trust":http://www.visualcomplexity.com/vc/project_details.cfm?id=769&index=769&domain=
+
+* looks a lot like my *stowers experiments*
+
+*NOTE:* Use some of the Stowers layouts as examples
 
 h3. bubbles and images
 
