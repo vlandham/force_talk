@@ -65,19 +65,23 @@
   }
 
 
-  function substep() {
-    var done = substeps.length == 0
-    if(!done) {
-      substeps.pop();
-    }
-    console.log(substeps);
-    return done;
-  }
-
   function sendUpdate() {
     var message = {'type':'update'}
     document.getElementById('current').contentWindow.postMessage(message,'*')
   }
+
+  function receiveMessage(e) {
+    console.log(e);
+      switch (e.type) {
+        case 'next': { 
+          step(+1);
+          break;
+        }
+        default: return;
+      }
+  }
+
+  window.onmessage = receiveMessage;
 
   function toggleCode() {
     var message = {'type':'code'}

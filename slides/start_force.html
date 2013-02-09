@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <link type="text/css" rel="stylesheet" href="../css/style.css"/>
+    <link type="text/css"  rel="stylesheet" href="../js/highlight.js/styles/tomorrow-night-bright.css">
+    <script type="text/javascript" src="../js/highlight.js/highlight.pack.js"></script>
+    <style type="text/css">
+
+circle.node {
+  cursor: pointer;
+  stroke: #000;
+  stroke-width: .5px;
+}
+
+line.link {
+  fill: none;
+  stroke: #9ecae1;
+  stroke-width: 1.5px;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2> </h2>
+    <script type="text/javascript">
+      this.substeps = ['start','tick'];
+    </script>
+    <script type="text/javascript" src="../js/d3.v3.js"></script>
+    <script type="text/javascript" src="../js/slide.js"></script>
+    <script type="text/javascript">
+
+var w = 1280,
+    h = 800,
+    nodes = [],
+    node;
+
+var force = d3.layout.force()
+  .nodes(nodes)
+  .size([w, h])
+  .on("tick", tick);
+
+  /* .charge(function(d) { return d._children ? -d.size / 100 : -30; }) */
+  /* .linkDistance(function(d) { return d.target._children ? 80 : 30; }) */
+
+var vis = d3.select("body").append("svg")
+    .attr("width", w)
+    .attr("height", h);
+
+function update() {
+  nodes.push({size:10},{size:10},{size:10});
+
+  // Update the nodes…
+  node = vis.selectAll("circle.node")
+      .data(nodes)
+      .style("fill", "steelblue")
+      .attr("r", function(d) { return d.size; });
+
+  // Enter any new nodes.
+  node.enter().append("circle")
+      .attr("class", "node")
+      .attr("cx", function(d) { return d.x; })
+      .attr("cy", function(d) { return d.y; })
+      .attr("r", function(d) { return d.size; })
+      .style("fill", "steelblue")
+      .call(force.drag);
+
+  // Exit any old nodes.
+  node.exit().remove();
+
+  // Restart the force layout.
+  force
+    .start();
+}
+
+function tick(e) {
+  node.attr("cx", function(d) { return d.x; })
+      .attr("cy", function(d) { return d.y; });
+}
+
+function step(cur_step) {
+  if(cur_step == 'start') {
+    update();
+  } else if(cur_step == 'tick') {
+    updateCode("#code2");
+  }
+
+}
+
+    </script>
+    <div id="code" class="javascript">
+      var force = d3.layout.force()
+        .nodes(nodes)
+        .size([w, h])
+        .on("tick", tick);
+
+      force.start()
+
+    </div>
+
+    <div id="code2" class='hide' style='font-size:30px;'>
+function tick() {
+  node.attr("cx", function(d) { return d.x; })
+      .attr("cy", function(d) { return d.y; });
+}
+    </div>
+  </body>
+</html>
