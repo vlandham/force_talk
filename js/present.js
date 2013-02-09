@@ -38,6 +38,10 @@
           sendUpdate();
           break;
         }
+        case 67: { // c
+          toggleCode();
+          break;
+        }
         case 35: { // end
           currentIndex = slides.length - 1;
           step(0);
@@ -72,7 +76,12 @@
 
   function sendUpdate() {
     var message = {'type':'update'}
-    current[0][0].contentWindow.postMessage(message,'*')
+    document.getElementById('current').contentWindow.postMessage(message,'*')
+  }
+
+  function toggleCode() {
+    var message = {'type':'code'}
+    document.getElementById('current').contentWindow.postMessage(message,'*')
   }
 
   function updateSubSteps(iframe) {
