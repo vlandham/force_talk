@@ -1,42 +1,75 @@
 body {
-  overflow: hidden;
-  margin: 0;
-  font: 14px "Helvetica Neue";
-}
-
-svg {
-  width: 1280px;
-  height: 800px;
-}
-
-#chart, #header {
-  position: absolute;
-  top: 0;
-}
-
-#header {
-  z-index: 1;
-  display: block;
-}
-
-#header {
-  top: 80px;
-  left: 140px;
   font: 300 36px "Helvetica Neue";
+  height: 640px;
+  margin: 80px 160px 80px 160px;
+  overflow: hidden;
+  position: relative;
+  width: 960px;
 }
 
-rect {
-  fill: none;
-  pointer-events: all;
+a:link, a:visited {
+  color: #777;
+  text-decoration: none;
 }
 
-pre {
+a:hover {
+  color: #666;
+}
+
+blockquote {
+  margin: 0;
+}
+
+blockquote:before {
+  content: "â€œ";
+  position: absolute;
+  left: -.4em;
+}
+
+blockquote:after {
+  content: "â€";
+  position: absolute;
+}
+
+body > ul {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-size: 64px;
+}
+
+h1, h2, h3 {
+  font-weight: inherit;
+  margin: 0;
+}
+
+h2, h3 {
+  text-align: right;
+  font-size: inherit;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+h2 {
+  font-size: 24px;
+  position: absolute;
+}
+
+h3 {
+  bottom: -20px;
   font-size: 18px;
 }
 
-line {
-  stroke: #000;
-  stroke-width: 1.5px;
+.invert {
+  background: #1f1f1f;
+  color: #dcdccc;
+}
+
+.invert h2, .invert h3 {
+  color: #7f9f7f;
 }
 
 .string, .regexp {
@@ -48,7 +81,8 @@ line {
 }
 
 .comment {
-  color: #555;
+  color: #777;
+  font-style: oblique;
 }
 
 .number {
@@ -57,4 +91,10 @@ line {
 
 .class, .special {
   color: #1181B8;
+}
+
+body > svg {
+  position: absolute;
+  top: -80px;
+  left: -160px;
 }
