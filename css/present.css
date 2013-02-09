@@ -8,7 +8,7 @@ body {
 
 iframe {
   border: none;
-  border: solid;
+  /* border: solid; */
   position: absolute;
   width: 1280px;
   height: 800px;
