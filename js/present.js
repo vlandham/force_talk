@@ -35,7 +35,7 @@
           break;
         }
         case 83: { // s
-          sendUpdate();
+          sendSubstep();
           break;
         }
         case 67: { // c
@@ -65,8 +65,8 @@
   }
 
 
-  function sendUpdate() {
-    var message = {'type':'update'}
+  function sendSubstep() {
+    var message = {'type':'substep'}
     document.getElementById('current').contentWindow.postMessage(message,'*')
   }
 

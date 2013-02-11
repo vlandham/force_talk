@@ -2,9 +2,10 @@
 h2. Slide Ideas
 
 * Intro to D3 Force "api":https://github.com/mbostock/d3/wiki/Force-Layout
-** One bubble
 ** multiple bubbles - "this demo":http://bl.ocks.org/1062383 has fun fly in
+*** code for force
 ** gravity
+** charge
 ** 
 
 * Just Nodes

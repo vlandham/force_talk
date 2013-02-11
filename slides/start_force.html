@@ -24,8 +24,9 @@ line.link {
   <body>
     <h2> </h2>
     <script type="text/javascript">
-      this.substeps = ['start','tick'];
+      this.substeps = ['start','tick','links'];
     </script>
+    <script type="text/javascript" src="../js/dat.gui.js"></script>
     <script type="text/javascript" src="../js/d3.v3.js"></script>
     <script type="text/javascript" src="../js/slide.js"></script>
     <script type="text/javascript">
@@ -33,12 +34,23 @@ line.link {
 var w = 1280,
     h = 800,
     nodes = [],
-    node;
+    links = [],
+    node, 
+    link;
+
+function charge(d) {
+  return -Math.pow(d.size, 2.0) / 4;
+}
 
 var force = d3.layout.force()
   .nodes(nodes)
+  .links(links)
+  .linkDistance(80)
   .size([w, h])
-  .on("tick", tick);
+  .on("tick", tick)
+  .charge(charge);
+
+nodes.push({size:30}, {size:30}, {size:30});
 
   /* .charge(function(d) { return d._children ? -d.size / 100 : -30; }) */
   /* .linkDistance(function(d) { return d.target._children ? 80 : 30; }) */
@@ -48,7 +60,6 @@ var vis = d3.select("body").append("svg")
     .attr("height", h);
 
 function update() {
-  nodes.push({size:10},{size:10},{size:10});
 
   // Update the nodes…
   node = vis.selectAll("circle.node")
@@ -68,24 +79,65 @@ function update() {
   // Exit any old nodes.
   node.exit().remove();
 
+  link = vis.selectAll("line.link")
+      .data(links, function(d) { return d.target.id; });
+
+  // Enter any new links.
+  link.enter().insert("line", ".node")
+      .attr("class", "link")
+      .attr("x1", function(d) { return d.source.x; })
+      .attr("y1", function(d) { return d.source.y; })
+      .attr("x2", function(d) { return d.target.x; })
+      .attr("y2", function(d) { return d.target.y; });
+
   // Restart the force layout.
   force
     .start();
 }
 
 function tick(e) {
+  force.alpha(.1);
   node.attr("cx", function(d) { return d.x; })
-      .attr("cy", function(d) { return d.y; });
-}
+    .attr("cy", function(d) { return d.y; });
+
+  link.attr("x1", function(d) { return d.source.x; })
+    .attr("y1", function(d) { return d.source.y; })
+    .attr("x2", function(d) { return d.target.x; })
+    .attr("y2", function(d) { return d.target.y; });
+};
 
 function step(cur_step) {
   if(cur_step == 'start') {
     update();
   } else if(cur_step == 'tick') {
     updateCode("#code2");
+  } else if(cur_step == 'links') {
+    var xTcount = 40;
+    for(var i = 0; i < xTcount; i++) {
+      nodes.push({size:30});
+    }
+    nodes.push({size:30},{size:30},{size:30});
+    // links.push({source:0,target:1});
+    update();
   }
+};
 
-}
+// window.onload = function() {
+var gui = new dat.GUI();
+  var config = {'charge':30, 'gravity':0.1};
+  var charger = gui.add(config, "charge", -300, 0);
+  charger.onChange(function(value) {
+      force.charge(value);
+      force.start();
+      });
+
+  var graver = gui.add(config, 'gravity', 0, 1);
+  graver.onChange(function(value) {
+      force.gravity(value);
+      force.start();
+      });
+
+// };
 
     </script>
     <div id="code" class="javascript">
