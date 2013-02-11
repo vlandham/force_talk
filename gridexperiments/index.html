@@ -1,0 +1,228 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Forces and grids</title>
+		<script type="text/javascript" src="d3.min.js"></script>
+		<script type="text/javascript" src="d3.layout.min.js"></script>
+		<script type="text/javascript" src="d3.geom.min.js"></script>
+		<script type="text/javascript" src="underscore-min.js"></script>
+		<script src="jquery-1.7.2.min.js" charset="utf-8">
+			
+		</script>
+		<style type="text/css" media="screen">
+			.menu{
+				position:absolute;
+				top :20px;
+				right:20px;
+			}
+		</style>	
+	</head>
+	<body>
+		<script type="text/javascript" charset="utf-8">
+			var w = 700, h = 700;
+
+			var vis = d3.select("body").append("svg:svg").attr("width", w).attr("height", h);
+			var background = vis.append("g");
+
+			var nodes = [];
+			var links = [];
+
+			var USE_GRID = true;
+			
+			var GRID_SIZE = 60;
+			
+			var GRID_TYPE = "HEXA";
+			
+			// set up event handlers
+			$(document).ready(function(){
+				$("#USE_GRID").click(
+					function(){
+						USE_GRID = $(this).is(":checked");
+						$(this).blur();
+						force.start();
+					}
+				);
+				
+				
+				//$("#CELL_SIZE").rangeinput();
+				$("#CELL_SIZE").bind("change", 
+					function(){
+
+						console.log($(this).attr("value"));
+						GRID_SIZE = $(this).attr("value");
+						grid.init();
+						force.start();
+					}
+				);
+				
+				$("[name=GRID_TYPE]").click( 
+					function(){
+						GRID_TYPE = $(this).attr("value");
+						grid.init();
+						force.start();
+					}
+				);
+			});
+
+			for(var i = 0; i < 30; i++) {
+				var node = {
+					label : "node " + i
+				};
+				nodes.push(node);
+			};
+
+			for(var i = 0; i < nodes.length; i++) {
+				for(var j = 0; j < i; j++) {
+					if(Math.random() > .99-Math.sqrt(i)*.02)
+						links.push({
+							source : i,
+							target : j,
+							weight :1
+						});
+				}
+			};
+
+			var force = d3.layout.force().size([w, h]).nodes(nodes).links(links).gravity(1).linkDistance(function(d){return (1-d.weight)*100}).charge(-3000).linkStrength(function(x) {
+				return x.weight * 5
+			});
+
+
+			force.start();
+
+			var link = vis.selectAll("line.link").data(links).enter().append("svg:line").attr("class", "link").style("stroke-width", 1.5).style("stroke", "#555").style("opacity", function(d){return d.weight*.7});
+
+			var node = vis.selectAll("g.node").data(force.nodes()).enter().append("svg:g").attr("class", "node");
+			node.append("svg:circle").attr("r", 6).style("fill", "#555").style("stroke", "#FFF").style("stroke-width", "4px");
+			node.call(force.drag);
+
+			var updateLink = function() {
+				this.attr("x1", function(d) {
+					return d.source.screenX;
+				}).attr("y1", function(d) {
+					return d.source.screenY;
+				}).attr("x2", function(d) {
+					return d.target.screenX;
+				}).attr("y2", function(d) {
+					return d.target.screenY;
+				});
+
+			}
+
+			var updateNode = function() {
+
+				this.attr("transform", function(d) {
+					if(USE_GRID) {
+						var gridpoint = grid.occupyNearest(d);
+
+						if(gridpoint) {
+							d.screenX = d.screenX || gridpoint.x;							
+							d.screenY = d.screenY || gridpoint.y;														
+							d.screenX += (gridpoint.x - d.screenX) * .2;
+							d.screenY += (gridpoint.y - d.screenY) * .2;
+							
+							d.x += (gridpoint.x - d.x) * .05;
+							d.y += (gridpoint.y - d.y) * .05;
+						}
+					} else {
+						d.screenX = d.x;
+						d.screenY = d.y;
+					}
+
+					return "translate(" + d.screenX + "," + d.screenY + ")";
+
+				});
+
+			};
+
+			var grid = function(width, height) {
+				return {
+					cells : [],
+
+					init : function() {
+						this.cells = [];
+						for(var i = 0; i < width / GRID_SIZE; i++) {
+							for(var j = 0; j < height / GRID_SIZE; j++) {
+								// HACK: ^should be a better way to determine number of rows and cols
+								var cell;
+								switch (GRID_TYPE) {
+									case "PLAIN":
+										cell = {
+											x : i * GRID_SIZE,
+											y : j * GRID_SIZE
+										};
+										break;
+									case "SHIFT_ODD_ROWS":
+										cell = {
+											x : i * GRID_SIZE,
+											y : 1.5 * (j * GRID_SIZE + (i % 2) * GRID_SIZE * .5)
+										};
+										break;
+									case "HEXA":
+										cell = {
+											x : i * GRID_SIZE + (j % 2) * GRID_SIZE * .5,
+											y : j * GRID_SIZE * .85
+										};
+										break;
+								}
+								this.cells.push(cell);
+								
+							};
+						};
+					},
+
+					sqdist : function(a, b) {
+						return Math.pow(a.x - b.x, 2) + Math.pow(a.y - b.y, 2);
+					},
+
+					occupyNearest : function(p) {
+						var minDist = 1000000;
+						var d;
+						var candidate = null;
+						for(var i = 0; i < this.cells.length; i++) {
+							if(!this.cells[i].occupied && ( d = this.sqdist(p, this.cells[i])) < minDist) {
+								minDist = d;
+								candidate = this.cells[i];
+							}
+						}
+						if(candidate)
+							candidate.occupied = true;
+						return candidate;
+					}
+
+				}
+			}(w, h);
+
+			force.on("tick", function() {
+				vis.select("g.gridcanvas").remove();
+				if(USE_GRID) {
+					grid.init();
+
+					var gridCanvas = vis.append("svg:g").attr("class", "gridcanvas");
+
+					_.each(grid.cells, function(c) {
+						gridCanvas.append("svg:circle").attr("cx", c.x).attr("cy", c.y).attr("r", 2).style("fill", "#555").style("opacity", .3);
+					});
+
+				}
+
+				node.call(updateNode);
+				link.call(updateLink);
+			});
+
+		</script>
+		<div class="menu">
+			<div>
+				<input type="checkbox" id="USE_GRID" checked>use grid</input>		
+			</div>
+			<div>
+				<input type="range" min="30" step="10" max="150" id="CELL_SIZE" value="60"></input>
+			</div>
+			<div>
+				<input type="radio" name="GRID_TYPE" value="PLAIN">plain</input>
+				<input type="radio" name="GRID_TYPE" value="SHIFT_ODD_ROWS">Shift odd rows</input>
+				<input type="radio" name="GRID_TYPE" value="HEXA" checked>Hexa</input>								
+			</div>
+		</div>
+	</body>
+</html>

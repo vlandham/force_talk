@@ -24,7 +24,7 @@ line.link {
   <body>
     <h2> </h2>
     <script type="text/javascript">
-      this.substeps = ['start','tick','links'];
+      this.substeps = ['start','more'];
     </script>
     <script type="text/javascript" src="../js/dat.gui.js"></script>
     <script type="text/javascript" src="../js/d3.v3.js"></script>
@@ -96,7 +96,6 @@ function update() {
 }
 
 function tick(e) {
-  force.alpha(.1);
   node.attr("cx", function(d) { return d.x; })
     .attr("cy", function(d) { return d.y; });
 
@@ -109,52 +108,32 @@ function tick(e) {
 function step(cur_step) {
   if(cur_step == 'start') {
     update();
-  } else if(cur_step == 'tick') {
-    updateCode("#code2");
-  } else if(cur_step == 'links') {
-    var xTcount = 40;
+  } else if(cur_step == 'more') {
+    var xTcount = 43;
     for(var i = 0; i < xTcount; i++) {
       nodes.push({size:30});
     }
-    nodes.push({size:30},{size:30},{size:30});
-    // links.push({source:0,target:1});
     update();
   }
 };
 
 // window.onload = function() {
 var gui = new dat.GUI();
-  var config = {'charge':30, 'gravity':0.1};
-  var charger = gui.add(config, "charge", -300, 0);
-  charger.onChange(function(value) {
-      force.charge(value);
-      force.start();
-      });
+var config = {'charge':30, 'gravity':0.1};
+var charger = gui.add(config, "charge", -300, 0);
+charger.onChange(function(value) {
+    force.charge(value);
+    force.start();
+    });
 
-  var graver = gui.add(config, 'gravity', 0, 1);
-  graver.onChange(function(value) {
-      force.gravity(value);
-      force.start();
-      });
+var graver = gui.add(config, 'gravity', 0, 1);
+graver.onChange(function(value) {
+    force.gravity(value);
+    force.start();
+    });
 
 // };
 
     </script>
-    <div id="code" class="javascript">
-      var force = d3.layout.force()
-        .nodes(nodes)
-        .size([w, h])
-        .on("tick", tick);
-
-      force.start()
-
-    </div>
-
-    <div id="code2" class='hide' style='font-size:30px;'>
-function tick() {
-  node.attr("cx", function(d) { return d.x; })
-      .attr("cy", function(d) { return d.y; });
-}
-    </div>
   </body>
 </html>

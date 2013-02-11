@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <link type="text/css" rel="stylesheet" href="../css/style.css"/>
+    <link type="text/css"  rel="stylesheet" href="../js/highlight.js/styles/tomorrow.css">
+    <script type="text/javascript" src="../js/highlight.js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+    <script type="text/javascript" src="../js/d3.v3.js"></script>
+    <script type="text/javascript" src="../js/slide.js"></script>
+  </head>
+  <body>
+    <h2>Force Code</h2>
+    <pre>
+      <code class="javascript">
+      var force = d3.layout.force()
+        .nodes(nodes)
+        .size([w, h])
+        .on("tick", tick);
+
+      force.start()
+      </code>
+    </pre>
+  </body>
+</html>
