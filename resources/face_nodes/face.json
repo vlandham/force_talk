@@ -1,0 +1,13 @@
+{"nodes":[
+		{"name":"eye_right", "size":141, "x":0},
+		{"name":"eye_left","size":134, "x":1000},
+		{"name":"nose", "size":152},
+		{"name":"mouth", "size":220, "fixed":true, "x":440,"y":650}
+ ],
+ "links":[
+ 	{"source":1,"target":0,"length":2},
+ 	{"source":0,"target":2,"length":1},
+ 	{"source":1,"target":2,"length":1},
+ 	{"source":2,"target":3,"length":0.2}
+ ]
+}

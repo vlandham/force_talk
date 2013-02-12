@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <link type="text/css" rel="stylesheet" href="../css/style.css"/>
+    <link type="text/css"  rel="stylesheet" href="../js/highlight.js/styles/tomorrow-night-bright.css">
+    <script type="text/javascript" src="../js/highlight.js/highlight.pack.js"></script>
+    <style type="text/css">
+
+circle.node {
+  cursor: pointer;
+  stroke: #000;
+  stroke-width: .5px;
+}
+
+line.link {
+  fill: none;
+  stroke: #444;
+  stroke-width: 4px;
+}
+
+    </style>
+  </head>
+  <body>
+    <h1>Using and Abusing the Force</h1>
+    <h1 style="font-size:80%;">Interesting applications of D3's force layout</h1>
+    <p>
+    Jim Vallandingham<br/>
+
+    <br/>
+    <a href="http://twitter.com/vlandham/">@vlandham</a><br>
+    </p>
+    <script type="text/javascript" src="../js/d3.v3.js"></script>
+    <script type="text/javascript" src="../js/slide.js"></script>
+    <script type="text/javascript">
+
+      var padding_left = 400;
+
+var w = 1280 - padding_left,
+    h = 800,
+    nodes = [],
+    links = [],
+    node, 
+    link;
+
+
+function charge(d) {
+  return -Math.pow(d.size, 2.0) / 5;
+}
+
+function distance(l) {
+  return l.length * 120;
+}
+
+  var force = d3.layout.force()
+  .nodes(nodes)
+  .links(links)
+  .size([w , h])
+  .on("tick", tick)
+  .linkDistance(distance)
+  .charge(charge);
+
+
+  /* .charge(function(d) { return d._children ? -d.size / 100 : -30; }) */
+  /* .linkDistance(function(d) { return d.target._children ? 80 : 30; }) */
+var vis = d3.select("body").append("svg")
+    .attr("width", w )
+    .attr("height", h)
+    .style("margin-left", padding_left);
+
+
+function update() {
+
+  // Update the nodes…
+  node = vis.selectAll(".node")
+      .data(nodes)
+
+  // Enter any new nodes.
+  node.enter().append("image")
+    .attr("xlink:href", function(d) { return "../resources/face_nodes/" + d.name + ".png"; })
+    .attr("class", "node")
+    .attr("x", function(d) { return -(d.size / 2); })
+    .attr("y", function(d) { return -(d.size / 2); })
+    .attr("width", function(d) { return d.size; })
+    .attr("height", function(d) { return d.size; })
+    .call(force.drag);
+
+  // Exit any old nodes.
+  node.exit().remove();
+
+  link = vis.selectAll("line.link")
+      .data(links);
+
+  // Enter any new links.
+  link.enter().insert("line", ".node")
+      .attr("class", "link")
+      .attr("x1", function(d) { return d.source.x; })
+      .attr("y1", function(d) { return d.source.y; })
+      .attr("x2", function(d) { return d.target.x; })
+      .attr("y2", function(d) { return d.target.y; });
+
+  // Restart the force layout.
+  force
+    .start();
+}
+
+function tick(e) {
+  node.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });   
+
+  link.attr("x1", function(d) { return d.source.x; })
+    .attr("y1", function(d) { return d.source.y; })
+    .attr("x2", function(d) { return d.target.x; })
+    .attr("y2", function(d) { return d.target.y; });
+};
+
+// function step(cur_step) {
+//   if(cur_step == 'start') {
+//     update();
+//   } else if(cur_step == 'more') {
+//     var xTcount = 43;
+//     for(var i = 0; i < xTcount; i++) {
+//       nodes.push({size:30});
+//     }
+//     update();
+//   }
+// };
+
+function load(error, data) {
+  data.nodes.forEach(function(d) {
+    nodes.push(d);
+    });
+
+  data.links.forEach(function(l) {
+      links.push(l);
+      });
+  update();
+
+}
+
+d3.json("../resources/face_nodes/face.json", load);
+
+
+    </script>
+  </body>
+</html>
