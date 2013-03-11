@@ -37,6 +37,10 @@ body > ul {
   padding: 0;
 }
 
+.highlight {
+  background-color: #FFFF88;
+}
+
 h1 {
   font-size: 64px;
 }
