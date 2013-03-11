@@ -1,6 +1,7 @@
 
 if(typeof this.substeps == 'undefined') {
   this.substeps = [];
+  console.log(this.substeps);
 }
 
 var src = null;
@@ -53,7 +54,9 @@ function receiveMessage(e) {
     var cur_step = this.substeps.shift();
     if(typeof step == 'function' && typeof cur_step != 'undefined') {
       step(cur_step);
-    } 
+    } else {
+      parentWindow.step(+1);
+    }
   }
   return true;
 }

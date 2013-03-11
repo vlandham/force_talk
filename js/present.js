@@ -1,4 +1,4 @@
-(function() {
+// (function() {
   var previous = d3.select("#previous"),
       current = d3.select("#current"),
       next = d3.select("#next"),
@@ -71,7 +71,7 @@
   }
 
   function receiveMessage(e) {
-    console.log(e);
+    // console.log(e);
       switch (e.type) {
         case 'next': { 
           step(+1);
@@ -81,7 +81,7 @@
       }
   }
 
-  window.onmessage = receiveMessage;
+  // window.onmessage = receiveMessage;
 
   function toggleCode() {
     var message = {'type':'code'}
@@ -94,6 +94,8 @@
   }
 
   function step(delta) {
+    var curr = document.getElementById('current').substeps;
+    console.log(curr);
     // console.log('step');
     // var done = substep();
     // if (!done) {
@@ -126,4 +128,4 @@
     current.transition().delay(250).duration(0).attr("src", slides[currentIndex] + query);
     next.transition().delay(750).duration(0).attr("src", slides[nextIndex] + query);
   }
-})();
+// })();

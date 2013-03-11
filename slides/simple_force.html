@@ -20,6 +20,9 @@ line.link {
 }
 
     </style>
+    <script type="text/javascript">
+      var substeps = ['start'];
+    </script>
   </head>
   <body>
     <h2>
@@ -50,9 +53,9 @@ var vis = d3.select("body").append("svg")
 
 d3.json("flare.json", function(json) {
   root = json;
-  root.fixed = true;
-  root.x = w / 2;
-  root.y = h / 2 - 80;
+  // root.fixed = true;
+  // root.x = w / 2;
+  // root.y = h / 2 - 80;
   update();
 });
 
@@ -64,7 +67,7 @@ function update() {
   force
       .nodes(nodes)
       .links(links)
-      .start();
+      // .start();
 
   // Update the links…
   link = vis.selectAll("line.link")
@@ -84,7 +87,7 @@ function update() {
   // Update the nodes…
   node = vis.selectAll("circle.node")
       .data(nodes, function(d) { return d.id; })
-      .style("fill", color);
+      .style("fill", function(d) { return color(d.children); });
 
   node.transition()
       .attr("r", function(d) { return d.children ? 4.5 : Math.sqrt(d.size) / 10; });
@@ -94,8 +97,9 @@ function update() {
       .attr("class", "node")
       .attr("cx", function(d) { return d.x; })
       .attr("cy", function(d) { return d.y; })
-      .attr("r", function(d) { return d.children ? 4.5 : Math.sqrt(d.size) / 10; })
-      .style("fill", color)
+      // .attr("r", function(d) { return d.children ? 4.5 : Math.sqrt(d.size) / 10; })
+      .attr("r", function(d) { return 4.5; })
+      .style("fill", function(d) { return color(d.children); })
       .on("click", click)
       .call(force.drag);
 
@@ -113,10 +117,11 @@ function tick() {
       .attr("cy", function(d) { return d.y; });
 }
 
+var color = d3.scale.category20();
 // Color leaf nodes orange, and packages white or blue.
-function color(d) {
-  return d._children ? "#3182bd" : d.children ? "#c6dbef" : "#fd8d3c";
-}
+// function color(d) {
+//   return d._children ? "#3182bd" : d.children ? "#c6dbef" : "#fd8d3c";
+// }
 
 // Toggle children on click.
 function click(d) {
@@ -137,13 +142,21 @@ function flatten(root) {
   function recurse(node) {
     if (node.children) node.size = node.children.reduce(function(p, v) { return p + recurse(v); }, 0);
     if (!node.id) node.id = ++i;
-    nodes.push(node);
+    // console.log(node.children);
+    // if(!node.children || node.children.size < 10) {
+      nodes.push(node);
     return node.size;
   }
 
   root.size = recurse(root);
   return nodes;
-}
+  }
+
+function step(cur_step) {
+  if(cur_step == 'start') {
+    force.start();
+  }
+};
 
 
     </script>
