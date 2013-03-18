@@ -16,21 +16,30 @@ a:hover {
   color: #666;
 }
 
-
 blockquote {
   margin: 0;
+  margin-top: 20%;
+  /* margin-top: 10px; */
+  margin-bottom: 10px;
+  margin-left: 50px;
+  padding-left: 15px;
+  border-left: 3px solid #ccc;
 }
 
-blockquote:before {
-  content: "â€œ";
-  position: absolute;
-  left: -.4em;
+.author {
+  margin-left: 50px;
+  color: #555;
 }
 
-blockquote:after {
-  content: "â€";
-  position: absolute;
+.center {
+  text-align: center;
+  margin: auto;
 }
+
+.vcenter {
+  margin-top: 20%;
+}
+
 
 body > ul {
   margin: 0;
