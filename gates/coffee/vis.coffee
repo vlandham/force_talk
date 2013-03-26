@@ -36,9 +36,9 @@ class BubbleChart
     # use the max total_amount in the data as the max in the scale's domain
     max_amount = d3.max(@data, (d) -> parseInt(d.total_amount))
     @radius_scale = d3.scale.pow().exponent(0.5).domain([0, max_amount]).range([2, 85])
+    @force = d3.layout.force()
+      .size([@width, @height])
     
-    this.create_nodes()
-    this.create_vis()
 
   # create node objects from original data
   # that will serve as the data behind each
@@ -109,13 +109,15 @@ class BubbleChart
   # Starts up the force layout with
   # the default values
   start: () =>
-    @force = d3.layout.force()
+    this.create_nodes()
+    this.create_vis()
+    @force
       .nodes(@nodes)
-      .size([@width, @height])
 
   # Sets up force layout to display
   # all nodes in one circle.
   display_group_all: () =>
+    console.log('disp')
     @force.gravity(@layout_gravity)
       .charge(this.charge)
       .friction(0.9)
@@ -188,13 +190,18 @@ class BubbleChart
 
 root = exports ? this
 
+
+
 $ ->
   chart = null
 
+  root.step = (cur_step) ->
+    if cur_step == 'start'
+      chart.start()
+      root.display_all()
+
   render_vis = (csv) ->
     chart = new BubbleChart csv
-    chart.start()
-    root.display_all()
   root.display_all = () =>
     chart.display_group_all()
   root.display_year = () =>

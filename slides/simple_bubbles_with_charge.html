@@ -15,83 +15,74 @@ circle.node {
 
 line.link {
   fill: none;
-  stroke: #444;
-  stroke-width: 4px;
+  stroke: #9ecae1;
+  stroke-width: 1.5px;
 }
 
     </style>
   </head>
   <body>
-    <h1>Using and Abusing the Force</h1>
-    <h1 style="font-size:80%;">Explanations and Applications of D3's force layout</h1>
-    <p>
-    Jim Vallandingham<br/>
-
-    <br/>
-    <a href="http://twitter.com/vlandham/">@vlandham</a><br>
-    <br/><br/>
-    <a href="http://vallandingham.me/">vallandingham.me</a><br>
-    </p>
+    <h2> </h2>
+    <script type="text/javascript">
+      var substeps = ['start','more'];
+    </script>
+    <script type="text/javascript" src="../js/dat.gui.js"></script>
     <script type="text/javascript" src="../js/d3.v3.js"></script>
     <script type="text/javascript" src="../js/slide.js"></script>
     <script type="text/javascript">
 
-      var padding_left = 400;
-
-var w = 1280 - padding_left,
+var w = 1280,
     h = 800,
     nodes = [],
     links = [],
     node, 
     link;
 
-
 function charge(d) {
-  return -Math.pow(d.size, 2.0) / 5;
+  return -Math.pow(d.size, 2.0) / 7;
 }
 
-function distance(l) {
-  return l.length * 120;
-}
-
-  var force = d3.layout.force()
+var force = d3.layout.force()
   .nodes(nodes)
   .links(links)
-  .size([w , h])
+  .linkDistance(80)
+  .size([w, h])
   .on("tick", tick)
-  .linkDistance(distance)
   .charge(charge);
 
+nodes.push({size:30}, {size:30}, {size:30});
+nodes.push({size:10}, {size:10}, {size:10});
+nodes.push({size:100}, {size:30}, {size:10});
 
   /* .charge(function(d) { return d._children ? -d.size / 100 : -30; }) */
   /* .linkDistance(function(d) { return d.target._children ? 80 : 30; }) */
-var vis = d3.select("body").append("svg")
-    .attr("width", w )
-    .attr("height", h)
-    .style("margin-left", padding_left);
 
+var vis = d3.select("body").append("svg")
+    .attr("width", w)
+    .attr("height", h);
 
 function update() {
 
   // Update the nodes…
-  node = vis.selectAll(".node")
+  node = vis.selectAll("circle.node")
       .data(nodes)
+      .style("fill", "steelblue")
+      .attr("r", function(d) { return d.size; });
 
   // Enter any new nodes.
-  node.enter().append("image")
-    .attr("xlink:href", function(d) { return "../resources/face_nodes/" + d.name + ".png"; })
-    .attr("class", "node")
-    .attr("x", function(d) { return -(d.size / 2); })
-    .attr("y", function(d) { return -(d.size / 2); })
-    .attr("width", function(d) { return d.size; })
-    .attr("height", function(d) { return d.size; })
-    .call(force.drag);
+  node.enter().append("circle")
+      .attr("class", "node")
+      .attr("cx", function(d) { return d.x; })
+      .attr("cy", function(d) { return d.y; })
+      .attr("r", function(d) { return d.size; })
+      .style("fill", "steelblue")
+      .call(force.drag);
 
   // Exit any old nodes.
   node.exit().remove();
 
   link = vis.selectAll("line.link")
-      .data(links);
+      .data(links, function(d) { return d.target.id; });
 
   // Enter any new links.
   link.enter().insert("line", ".node")
@@ -107,7 +98,8 @@ function update() {
 }
 
 function tick(e) {
-  node.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });   
+  node.attr("cx", function(d) { return d.x; })
+    .attr("cy", function(d) { return d.y; });
 
   link.attr("x1", function(d) { return d.source.x; })
     .attr("y1", function(d) { return d.source.y; })
@@ -115,32 +107,34 @@ function tick(e) {
     .attr("y2", function(d) { return d.target.y; });
 };
 
-// function step(cur_step) {
-//   if(cur_step == 'start') {
-//     update();
-//   } else if(cur_step == 'more') {
-//     var xTcount = 43;
-//     for(var i = 0; i < xTcount; i++) {
-//       nodes.push({size:30});
-//     }
-//     update();
-//   }
-// };
+function step(cur_step) {
+  if(cur_step == 'start') {
+    update();
+  } else if(cur_step == 'more') {
+    var xTcount = 43;
+    for(var i = 0; i < xTcount; i++) {
+      nodes.push({size: i * 10 % 60});
+    }
+    update();
+  }
+};
 
-function load(error, data) {
-  data.nodes.forEach(function(d) {
-    nodes.push(d);
+// window.onload = function() {
+var gui = new dat.GUI();
+var config = {'gravity':0.1};
+// var charger = gui.add(config, "charge", -300, 0);
+// charger.onChange(function(value) {
+//     force.charge(value);
+//     force.start();
+//     });
+
+var graver = gui.add(config, 'gravity', 0, 1);
+graver.onChange(function(value) {
+    force.gravity(value);
+    force.start();
     });
 
-  data.links.forEach(function(l) {
-      links.push(l);
-      });
-  update();
-
-}
-
-d3.json("../resources/face_nodes/face.json", load);
-
+// };
 
     </script>
   </body>

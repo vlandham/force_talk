@@ -9,10 +9,12 @@
     <script type="text/javascript" src="../js/jquery.highlight.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
     <script type="text/javascript">
-      var substeps = ['highlight'];
+      var substeps = ['highlight_charge', 'highlight'];
 
       function step(cur_step) {
-        if(cur_step == 'highlight') {
+        if(cur_step == 'highlight_charge') {
+          $('code').highlight('charge')
+        } else if(cur_step == 'highlight') {
           $('code').highlight('d.amount')
 
         } else if(cur_step == 'more') {
