@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <link type="text/css" rel="stylesheet" href="../css/style.css"/>
+    <link type="text/css"  rel="stylesheet" href="../js/highlight.js/styles/tomorrow.css">
+    <script type="text/javascript" src="../js/highlight.js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+    <script type="text/javascript" src="../js/d3.v3.js"></script>
+    <script type="text/javascript" src="../js/slide.js"></script>
+  </head>
+  <body>
+    <h2>Force Code</h2>
+    <pre>
+      <code class="javascript">
+function tick(e) {
+
+  var alpha = e.alpha;
+  node
+    .each(move_to_category_center(alpha))
+    .each(buoyancy(alpha));
+
+  node.attr("cx", function(d) { return d.x; })
+      .attr("cy", function(d) { return d.y; });
+}
+
+function buoyancy(alpha) {
+  return function(d) {
+    var targetY = tierFor(d);
+    d.y = d.y + (targetY - d.y) * alpha * alpha;
+  };
+
+function move_to_category_center(alpha) {
+  return function(d) {
+    // ...
+  };
+}
+      </code>
+    </pre>
+    </body>
+
+    <!--https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Functions_and_function_scope-->
+    <!--In JavaScript, functions are first-class objects, i.e. they are objects and can be manipulated and passed around just like any other object. Specifically, they are Function objects.-->
+</html>
