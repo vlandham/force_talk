@@ -2,34 +2,83 @@
 h2. Slide Ideas
 
 * Intro to D3 Force "api":https://github.com/mbostock/d3/wiki/Force-Layout
+** what makes a force directed layout - just bubbles
+** source code for basic force
 ** multiple bubbles - "this demo":http://bl.ocks.org/1062383 has fun fly in
-*** source code for basic force
-*** source code for moving nodes
-** add more bubbles
-*** gravity
-*** charge
-** alpha
-*** simulated annealing
+** gravity
+** charge
 
-** 
-
-* Just Nodes
+* Bubble Chart
+** gates bubble chart example?
+** bubble chart code
+** bubble chart example with overlap
 ** custom charge per node
-*** node by node
-*** Bubble Chart - NYT budget
-*** My version of bubble chart
-*** another bubble chart
-** Collision Detection
-*** Bubble Cloud
-** Custom Nodes
+** correct bubble chart
+** nyt example?
+
+* Custom Forces
+** node data - show what data nodes have
+** code for custom tick force
+** example - no alpha
+** simulated annealing
+** alpha
+** example - alpha
+** gates example
+
+* Collision Detection
+** nyt bubble cloud example
+** book bubble cloud example
+** basic collision code
+** quadtrees
+** quadtree view
+** quadtree code
+** book example
+** word cloud quote
+** add mouse like in: http://bl.ocks.org/GerHobbelt/3116713 ? 
+
+* Custom Nodes
+** other symbols example: http://bl.ocks.org/mbostock/1062383
+** images example: http://bl.ocks.org/mbostock/950642
+** states force directed example: http://mbostock.github.com/d3/talk/20111018/force-states.html
+
 
 * Nodes & Edges
-** Basic force directed
-** edge styles
+** code for basic example
+** edge link
+** edge strength
+** data based edge strength
+** racial divide map
+** edge custom styles?
+** curved edges?
+** adding and removing edges
+** senate social network: http://news.yahoo.com/senate-social-network-diagram-mcconnell-mean-girls-000513361.html
+** game of thrones places: http://www.jeromecukier.net/projects/agot/places.html
+** add/remove edges code
 
-* Moving between layouts
+
+* Custom Layouts
+** use of custom force
+** moving between layouts
+** flowing data example
+** stowers collaboration example
+** circle layout code
+** spiral layout code?
+** sunflower layout?
+
+* More Custom Layouts
+** clustered forces layout: http://bl.ocks.org/mbostock/1747543
+** grid layout: http://moritzstefaner.github.com/gridexperiments/
+** force directed labels?
+** my other stowers attempts?
 
 h2. Network Ideas
+
+h3. strange expanding nodes
+
+http://bl.ocks.org/GerHobbelt/3104394
+
+just expanding nodes:
+http://bl.ocks.org/GerHobbelt/3071239
 
 h3. Lynn's delicious
 
@@ -138,4 +187,14 @@ h3. Edge styling
 
 "widths of edges":http://www.jasondavies.com/random-arboretum/
 
+h3. Idea: use grid layout for time scale map
 
+shapefiles for NYC subway: http://spatialityblog.com/2010/07/08/mta-gis-data-update/#datalinks
+
+subway station lat/lon: http://aautar.digital-radiation.com/blog/?p=3902
+
+commute times: http://datagardenblog.net/2012/03/3/nyc-time-map-2/
+
+subway data: http://datamine.mta.info/
+
+distance matrix: https://developers.google.com/maps/documentation/javascript/distancematrix
