@@ -25,23 +25,24 @@ h2. Slide Ideas
 ** alpha
 ** example - alpha
 ** gates example
+** multiple forces working - nyt example
+** add version of gates that includes this tweak?
 
 * Collision Detection
 ** nyt bubble cloud example
 ** book bubble cloud example
 ** basic collision code
+** add mouse like in: http://bl.ocks.org/GerHobbelt/3116713 
 ** quadtrees
 ** quadtree view
 ** quadtree code
 ** book example
 ** word cloud quote
-** add mouse like in: http://bl.ocks.org/GerHobbelt/3116713 ? 
 
 * Custom Nodes
 ** other symbols example: http://bl.ocks.org/mbostock/1062383
 ** images example: http://bl.ocks.org/mbostock/950642
 ** states force directed example: http://mbostock.github.com/d3/talk/20111018/force-states.html
-
 
 * Nodes & Edges
 ** code for basic example
@@ -71,6 +72,10 @@ h2. Slide Ideas
 ** grid layout: http://moritzstefaner.github.com/gridexperiments/
 ** force directed labels?
 ** my other stowers attempts?
+
+* Big Finish?!?
+** Could be grid layout with NYC metro locations
+** could be Nature of Code basic example... 
 
 h2. Network Ideas
 
