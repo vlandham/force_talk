@@ -26,18 +26,31 @@
     <script type="text/javascript" src="../js/slide.js"></script>
   </head>
   <body>
-    <h2>Set Radius</h2>
+    <h2>Collide</h2>
     <pre>
       <code class="javascript" style="font-size: 85%;">
-      var force = d3.layout.force()
-        .nodes(nodes)
-        .size([width, height])
-        .on("tick", tick)
-        .charge(charge);
 
-     function charge(d) {
-       return -Math.pow(d.amount, 2.0) / 4;
-     }
+function collide(alpha) {
+  return function(d) {
+    nodes.forEach(function(d2) {
+      if(d != d2) {
+        var x = d.x - d2.x;
+        var y = d.y - d2.y;
+        var distance = Math.sqrt(x * x + y * y);
+
+        var minDistance = d.size + d2.size + 3;
+
+        if(distance < minDistance) {
+          var newDistance = ((distance - minDistance) / distance) * alpha;
+          d.x = d.x - (x * newDistance);
+          d.y = d.y - (y * newDistance);
+          d2.x = d2.x + (x * newDistance);
+          d2.y = d2.y + (y * newDistance);
+        }
+      }
+    });
+  };
+}
       
       </code>
     </pre>

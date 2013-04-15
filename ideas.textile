@@ -15,6 +15,7 @@ h2. Slide Ideas
 ** custom charge per node
 ** correct bubble chart
 ** nyt example?
+** multiple custom forces
 
 * Custom Forces
 ** node data - show what data nodes have

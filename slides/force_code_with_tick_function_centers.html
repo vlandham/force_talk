@@ -11,7 +11,7 @@
     <script type="text/javascript" src="../js/slide.js"></script>
   </head>
   <body>
-    <h2>Force Code</h2>
+    <h2></h2>
     <pre>
       <code class="javascript">
 var category_centers = {
@@ -22,13 +22,13 @@ var category_centers = {
 // called for every force 'tick'
 function tick() {
 
-  node.each(mess_with_node_position());
+  node.each(move_toward_category_center());
 
   node.attr("cx", function(d) { return d.x; })
       .attr("cy", function(d) { return d.y; });
 }
 
-function mess_with_node_position() {
+function move_toward_category_center() {
   return function(d) {
     var center = category_centers[d.category];
 
