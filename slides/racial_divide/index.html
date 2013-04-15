@@ -1,0 +1,64 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+	<title>Visualizing The Racial Divide</title>
+	<meta name="description" content="">
+	<meta name="author" content="Jim Vallandingham">
+
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+  <link href='http://fonts.googleapis.com/css?family=Cardo' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/racial_divide.css">
+  <script type="text/javascript">
+    var substeps = ['start', 'zoom_first', 'zoom_op', 'zoom_current', 'zoom_out'];
+  </script>
+
+	<script src="js/modernizr-2.0.6.min.js"></script>
+</head>
+<body>
+  <div id="container">
+    <div id="desc">
+      <h1>Visualizing The Racial Divide</h1>
+    </div>
+    <div id="cities">
+      <a id="kc">Kansas City</a>
+      <a id="mw">Milwaukee</a>
+      <a id="ch">Chicago</a>
+      <a id="sl">St. Louis</a>
+      <a id="sy">Syracuse</a>
+      <a id="dy">Dayton</a>
+      <a id="pt">Pittsburgh</a>
+      <a id="dn">Denver</a>
+      <a id="co">Columbus</a>
+      <a id="oc">Oklahoma City</a>
+      <a id="wc">Wichita</a>
+    </div>
+    <div id="main" role="main">
+    <div id="vis"></div>
+  </div>
+  <div class="clearfix"></div>
+</div> <!--! end of #container -->
+
+<!-- scripts -->
+<script src="js/jquery-1.6.2.min.js"></script>
+<script src="js/underscore-min.js"></script>
+<script src="js/coffee-script.js"></script>
+<script src="js/d3.v3.min.js"></script>
+<script src="js/plugins.js"></script>
+<script type="text/javascript" src="../js/slide.js"></script>
+<script type="text/coffeescript" src="coffee/racial_divide.coffee"></script>
+<!-- end scripts-->
+
+<!--[if lt IE 7 ]>
+	<script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.2/CFInstall.min.js"></script>
+	<script>window.attachEvent("onload",function(){CFInstall.check({mode:"overlay"})})</script>
+<![endif]-->
+
+</body>
+</html>
