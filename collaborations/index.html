@@ -1,0 +1,163 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>Stowers Institute Collaboration Network</title>
+  <meta name="description" content="Intra-facility Collaboration Network for Stowers Institute">
+  <meta name="author" content="Jim Vallandingham">
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <!-- CSS: implied media=all -->
+  <link rel="stylesheet" href="css/style.css">
+  <!-- end CSS-->
+  <script src="js/libs/modernizr-2.0.6.min.js"></script>
+</head>
+
+<body>
+  <div id="container">
+    <header>
+    <h1>Stowers Group Collaboration</h1>
+    </header>
+    <div id="search_section" class="control">
+      <form id="search_form" action="" class="styled" method="post">
+        <p class="search_title">Search <input type="text" class="text-input" id="search" value="" /></p>
+      </form>
+    </div>
+    <div id="right_section" class="control">
+      <a id="about">About</a>
+      <a id="key_button">Key</a>
+      <div id="key_container" style="display: none;">
+        <div id="key">
+        </div>
+      </div>
+    </div>
+    <div id="modifiers">
+    <div id="filters" class="control">
+      <h3 class="title">Sort</h3>
+      <a id="size" class="active">Size</a>
+      <a id="edge">Links</a>
+      <a id="lab_core">Lab / Core</a>
+      <a id="spiral">Individuals</a>
+    </div>
+    <div id="showing" class="control">
+      <h3 class="title">Show</h3>
+      <a id="all" >All</a>
+      <a id="current" class="active">Current</a>
+      <a id="labs_only">Labs</a>
+      <a id="cores_only">Cores</a>
+      <!-- <a id="pi_only">PIs</a> -->
+    </div>
+    <div id="colors" class="control">
+      <h3 class="title">Color</h3>
+      <a id="group" class="active">Group</a>
+      <a id="function">Lab / Core</a>
+      <a id="discipline">Discipline</a>
+    </div>
+  </div>
+  <div id="main" role="main">
+    <!--[if lt IE 9 ]>
+    <div id="old_warning"><h2>Use <a href="https://www.google.com/chrome">Google Chrome</a>, Firefox, or Safari for an interactive version</h2>
+      <div id="static_vis"><img src="img/network.jpg"/></div>
+    <![endif]-->
+
+      <div id="vis"></div>
+      <div id="tooltip" class="hidden">
+        <div class="content"></div>
+        <div class="tri"></div>
+      </div>
+				<div id="box" class="hidden"></div>
+      <div id='titles'></div>
+    </div>
+    <div class="clearfix"></div>
+    <div id="basic-modal-content">
+      <h3>Intra-Group Collaboration at Stowers</h3>
+      <p>This visualization represents collaboration between research groups and core facilities at the Stowers Institute.</p>
+      <p>Each <strong>dot</strong> represents an individual. Larger dots represent PIs and core directors. Individuals are clustered into their respective lab or group. Dots in the same group share the same color.</p>
+
+      <p>A <strong>link</strong> is created between two individuals if they have collaborated together on a published paper.</p>
+
+      <p>Groups and individuals can be <strong>sorted</strong>, <strong>filtered</strong>, and <strong>categorized</strong> using the buttons at the top of the page.  Explore different combinations of these controls to uncover interesting details about this data.
+
+      <p>Individuals can be found quickly using the <strong>search bar</strong> at the top of the page. Simply start typing a name and individuals in the network that match all or part of the name will be highlighted.</p>
+
+      <h3>About The Data</h3>
+      <p>Publications were collected from the <a href="http://stowers.org/research/publications">Stowers Publication List</a>. <a href="http://www.ncbi.nlm.nih.gov/pubmed/">PubMed</a> was queried to get a full author listing for each paper. This list of authors for each publication was compared to a list of employees at Stowers to generate the final data set used to make this graph.</p>
+      <p>Publication data was last updated: <strong>December 20th, 2011</strong>.
+      <p>Best viewed using <a href="https://www.google.com/chrome">Google Chrome</a> or <a href="http://www.apple.com/safari/">Safari</a>.</p>
+      <p>Created by Jim Vallandingham &amp; Chris Seidel</p>
+    </div>
+
+    <!-- preload the images -->
+    <div style='display:none'>
+      <img src='img/basic/x.png' alt='' />
+    </div>
+
+    <footer>
+    </footer>
+  </div> <!--! end of #container -->
+
+  <!-- JavaScript at the bottom for fast page loading -->
+
+  <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
+  <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script> -->
+  <script>window.jQuery || document.write('<script src="js/libs/jquery-1.6.2.min.js"><\/script>')</script>
+
+  <script src="full_js/jquery.simplemodal.js"></script>
+  <script src="full_js/libs/d3.v2.min.js"></script>
+  <script src="full_js/plugins.js"></script>
+  <script src="full_js/script.js"></script>
+  <script src="full_js/collaboration_map.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+        $('#filters a').click(function() {
+          $('#filters a').removeClass("active");
+          var typeId = $(this).attr("id");
+          $(this).addClass("active");
+          move_groups(typeId);
+          });
+        $('#colors a').click(function() {
+          $('#colors a').removeClass("active");
+          var typeId = $(this).attr("id");
+          $(this).addClass("active");
+          color_nodes(typeId);
+          });
+        $('#showing a').click(function() {
+          $('#showing a').removeClass("active");
+          var typeId = $(this).attr("id");
+          $(this).addClass("active");
+          show_groups(typeId);
+          });
+        $("#search").keyup(function() {
+          var search_term = $(this).val()
+          find_nodes(search_term);
+          });
+        $("#key_button").click(function() {
+            if ( $("#key_container").is(":hidden") ) {
+            $("#key_container").slideDown("normal");
+            $("#key_button").addClass("active");
+            } else {
+            $("#key_container").slideUp("normal");
+            $("#key_button").removeClass("active");
+            }
+          });
+        });
+      </script>
+
+  <!-- end scripts-->
+
+  <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.
+       chromium.org/developers/how-tos/chrome-frame-getting-started -->
+  <!--[if lt IE 7 ]>
+    <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+    <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+  <![endif]-->
+</body>
+</html>

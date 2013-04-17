@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <link type="text/css" rel="stylesheet" href="../css/style.css"/>
+    <link type="text/css"  rel="stylesheet" href="../js/highlight.js/styles/tomorrow.css">
+    <script type="text/javascript" src="../js/highlight.js/highlight.pack.js"></script>
+    <script type="text/javascript" src="../js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="../js/jquery.highlight.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script type="text/javascript">
+      var substeps = ['highlight'];
+
+      function step(cur_step) {
+        if(cur_step == 'highlight') {
+          $('code').highlight('force')
+
+        } else if(cur_step == 'more') {
+        }
+      };
+    </script>
+    
+    <script type="text/javascript" src="../js/d3.v3.js"></script>
+    <script type="text/javascript" src="../js/slide.js"></script>
+  </head>
+  <body>
+    <h2>Radial Layout</h2>
+    <pre>
+      <code class="javascript">
+D2R = Math.PI / 180;
+
+var center = {x: 200, y: 200};
+
+function radialLocation(angle, radius) {
+  var x = center.x + Math.cos(angle * D2R) * radius;
+  var y = center.y + Math.sin(angle * D2R) * radius;
+
+  return {x: x, y: y};
+}
+      </code>
+    </pre>
+  </body>
+</html>

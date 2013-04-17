@@ -45,18 +45,18 @@ h2. Slide Ideas
 ** states force directed example: http://mbostock.github.com/d3/talk/20111018/force-states.html
 
 * Nodes & Edges
+** basic example
 ** code for basic example
 ** edge link
 ** edge strength
 ** data based edge strength
 ** racial divide map
 ** edge custom styles?
-** curved edges?
+** curved edges?: http://bl.ocks.org/mbostock/4600693
 ** adding and removing edges
 ** senate social network: http://news.yahoo.com/senate-social-network-diagram-mcconnell-mean-girls-000513361.html
 ** game of thrones places: http://www.jeromecukier.net/projects/agot/places.html
 ** add/remove edges code
-
 
 * Custom Layouts
 ** use of custom force
@@ -77,7 +77,21 @@ h2. Slide Ideas
 ** Could be grid layout with NYC metro locations
 ** could be Nature of Code basic example... 
 
+** hull on top of particle emitter ... synced to music?
+** planaira moving about?
+
 h2. Network Ideas
+
+h3. big finish
+
+d3 flock: 
+https://github.com/shuw/flock/blob/master/assets/js/example.coffee
+
+jason davies alpha shape:
+http://bl.ocks.org/jasondavies/1554783
+
+convex hull
+http://bl.ocks.org/mbostock/4341699
 
 h3. strange expanding nodes
 
@@ -110,6 +124,9 @@ h3. Bubble cloud
 "my version":http://vallandingham.me/bubble_cloud/
 
 "shape of my library":http://shapeofmylibrary.com/ - also featured by @alignedleft ?
+
+* Sarah Groff-Palermo
+* @supersgp
 
 h3. Custom Gravity
 
@@ -204,3 +221,29 @@ commute times: http://datagardenblog.net/2012/03/3/nyc-time-map-2/
 subway data: http://datamine.mta.info/
 
 distance matrix: https://developers.google.com/maps/documentation/javascript/distancematrix
+
+
+buoyancy original code:
+
+    // 
+    buoyancy: function(alpha) {
+      var that = this;
+      return function(d){
+          // d.y -= 1000 * alpha * alpha * alpha * d.changeCategory
+          
+          // if (d.changeCategory >= 0) {
+          //   d.y -= 1000 * alpha * alpha * alpha
+          // } else {
+          //   d.y += 1000 * alpha * alpha * alpha
+          // }
+          
+          
+          var targetY = that.centerY - (d.changeCategory / 3) * that.boundingRadius
+          d.y = d.y + (targetY - d.y) * (that.defaultGravity) * alpha * alpha * alpha * 100
+          
+          
+          
+      };
+    },
+    
+
