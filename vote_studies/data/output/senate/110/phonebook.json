@@ -1,0 +1,1226 @@
+{
+  "400576": {
+    "bioguide": "C000560", 
+    "last": "Coburn", 
+    "name": "Tom Coburn", 
+    "url": "http://www.coburn.senate.gov", 
+    "votes": [
+      607, 
+      657
+    ], 
+    "state": "OK", 
+    "party": "Republican"
+  }, 
+  "300025": {
+    "bioguide": "C001035", 
+    "last": "Collins", 
+    "name": "Susan M. Collins", 
+    "url": "http://www.collins.senate.gov", 
+    "votes": [
+      657, 
+      657
+    ], 
+    "state": "ME", 
+    "party": "Republican"
+  }, 
+  "300024": {
+    "bioguide": "C001057", 
+    "last": "Coleman", 
+    "name": "Norm Coleman", 
+    "url": "http://coleman.senate.gov", 
+    "votes": [
+      634, 
+      657
+    ], 
+    "state": "MN", 
+    "party": "Republican"
+  }, 
+  "300027": {
+    "bioguide": "C001056", 
+    "last": "Cornyn", 
+    "name": "John Cornyn", 
+    "url": "http://www.cornyn.senate.gov", 
+    "votes": [
+      634, 
+      657
+    ], 
+    "state": "TX", 
+    "party": "Republican"
+  }, 
+  "300026": {
+    "bioguide": "C000705", 
+    "last": "Conrad", 
+    "name": "Kent Conrad", 
+    "url": "http://conrad.senate.gov", 
+    "votes": [
+      643, 
+      657
+    ], 
+    "state": "ND", 
+    "party": "Democrat"
+  }, 
+  "300021": {
+    "bioguide": "C000286", 
+    "last": "Chambliss", 
+    "name": "Saxby Chambliss", 
+    "url": "http://www.chambliss.senate.gov", 
+    "votes": [
+      645, 
+      657
+    ], 
+    "state": "GA", 
+    "party": "Republican"
+  }, 
+  "300023": {
+    "bioguide": "C000567", 
+    "last": "Cochran", 
+    "name": "Thad Cochran", 
+    "url": "http://www.cochran.senate.gov", 
+    "votes": [
+      648, 
+      657
+    ], 
+    "state": "MS", 
+    "party": "Republican"
+  }, 
+  "300022": {
+    "bioguide": "C001041", 
+    "last": "Clinton", 
+    "name": "Hillary Clinton", 
+    "url": "http://clinton.senate.gov", 
+    "votes": [
+      449, 
+      657
+    ], 
+    "state": "NY", 
+    "party": "Democrat"
+  }, 
+  "300029": {
+    "bioguide": "C000858", 
+    "last": "Craig", 
+    "name": "Larry Craig", 
+    "url": "http://craig.senate.gov", 
+    "votes": [
+      618, 
+      657
+    ], 
+    "state": "ID", 
+    "party": "Republican"
+  }, 
+  "300098": {
+    "bioguide": "V000126", 
+    "last": "Voinovich", 
+    "name": "George Voinovich", 
+    "url": "http://voinovich.senate.gov/", 
+    "votes": [
+      645, 
+      657
+    ], 
+    "state": "OH", 
+    "party": "Republican"
+  }, 
+  "300099": {
+    "bioguide": "W000154", 
+    "last": "Warner", 
+    "name": "John Warner", 
+    "url": "http://warner.senate.gov/", 
+    "votes": [
+      604, 
+      657
+    ], 
+    "state": "VA", 
+    "party": "Republican"
+  }, 
+  "300090": {
+    "bioguide": "S001142", 
+    "last": "Smith", 
+    "name": "Gordon Smith", 
+    "url": "http://gsmith.senate.gov/", 
+    "votes": [
+      652, 
+      657
+    ], 
+    "state": "OR", 
+    "party": "Republican"
+  }, 
+  "300091": {
+    "bioguide": "S000663", 
+    "last": "Snowe", 
+    "name": "Olympia J. Snowe", 
+    "url": "http://snowe.senate.gov/", 
+    "votes": [
+      657, 
+      657
+    ], 
+    "state": "ME", 
+    "party": "Republican"
+  }, 
+  "300092": {
+    "bioguide": "S000709", 
+    "last": "Specter", 
+    "name": "Arlen Specter", 
+    "url": "http://specter.senate.gov/", 
+    "votes": [
+      647, 
+      657
+    ], 
+    "state": "PA", 
+    "party": "Democrat"
+  }, 
+  "300093": {
+    "bioguide": "S000770", 
+    "last": "Stabenow", 
+    "name": "Debbie Stabenow", 
+    "url": "http://www.stabenow.senate.gov", 
+    "votes": [
+      649, 
+      657
+    ], 
+    "state": "MI", 
+    "party": "Democrat"
+  }, 
+  "300094": {
+    "bioguide": "S000888", 
+    "last": "Stevens", 
+    "name": "Ted Stevens", 
+    "url": "http://stevens.senate.gov/", 
+    "votes": [
+      631, 
+      657
+    ], 
+    "state": "AK", 
+    "party": "Republican"
+  }, 
+  "300095": {
+    "bioguide": "S001078", 
+    "last": "Sununu", 
+    "name": "John Sununu", 
+    "url": "http://sununu.senate.gov/", 
+    "votes": [
+      645, 
+      657
+    ], 
+    "state": "NH", 
+    "party": "Republican"
+  }, 
+  "300097": {
+    "bioguide": "T000162", 
+    "last": "Thomas", 
+    "name": "Craig Thomas", 
+    "url": "http://thomas.senate.gov/", 
+    "votes": [
+      164, 
+      181
+    ], 
+    "state": "WY", 
+    "party": "Republican"
+  }, 
+  "300010": {
+    "bioguide": "B000611", 
+    "last": "Bond", 
+    "name": "Christopher Bond", 
+    "url": "http://bond.senate.gov", 
+    "votes": [
+      630, 
+      657
+    ], 
+    "state": "MO", 
+    "party": "Republican"
+  }, 
+  "300011": {
+    "bioguide": "B000711", 
+    "last": "Boxer", 
+    "name": "Barbara Boxer", 
+    "url": "http://www.boxer.senate.gov", 
+    "votes": [
+      620, 
+      657
+    ], 
+    "state": "CA", 
+    "party": "Democrat"
+  }, 
+  "300013": {
+    "bioguide": "B000953", 
+    "last": "Brownback", 
+    "name": "Samuel Brownback", 
+    "url": "http://brownback.senate.gov", 
+    "votes": [
+      515, 
+      657
+    ], 
+    "state": "KS", 
+    "party": "Republican"
+  }, 
+  "300014": {
+    "bioguide": "B001066", 
+    "last": "Bunning", 
+    "name": "Jim Bunning", 
+    "url": "http://bunning.senate.gov", 
+    "votes": [
+      636, 
+      657
+    ], 
+    "state": "KY", 
+    "party": "Republican"
+  }, 
+  "300016": {
+    "bioguide": "B001210", 
+    "last": "Byrd", 
+    "name": "Robert Byrd", 
+    "url": "http://byrd.senate.gov", 
+    "votes": [
+      592, 
+      657
+    ], 
+    "state": "WV", 
+    "party": "Democrat"
+  }, 
+  "300018": {
+    "bioguide": "C000127", 
+    "last": "Cantwell", 
+    "name": "Maria Cantwell", 
+    "url": "http://www.cantwell.senate.gov", 
+    "votes": [
+      650, 
+      657
+    ], 
+    "state": "WA", 
+    "party": "Democrat"
+  }, 
+  "300019": {
+    "bioguide": "C000174", 
+    "last": "Carper", 
+    "name": "Thomas R. Carper", 
+    "url": "http://www.carper.senate.gov", 
+    "votes": [
+      650, 
+      657
+    ], 
+    "state": "DE", 
+    "party": "Democrat"
+  }, 
+  "300087": {
+    "bioguide": "S000148", 
+    "last": "Schumer", 
+    "name": "Charles E. Schumer", 
+    "url": "http://www.schumer.senate.gov", 
+    "votes": [
+      644, 
+      657
+    ], 
+    "state": "NY", 
+    "party": "Democrat"
+  }, 
+  "300084": {
+    "bioguide": "R000361", 
+    "last": "Rockefeller", 
+    "name": "John D. Rockefeller, IV", 
+    "url": "http://www.rockefeller.senate.gov", 
+    "votes": [
+      628, 
+      657
+    ], 
+    "state": "WV", 
+    "party": "Democrat"
+  }, 
+  "300083": {
+    "bioguide": "R000307", 
+    "last": "Roberts", 
+    "name": "Pat Roberts", 
+    "url": "http://www.roberts.senate.gov", 
+    "votes": [
+      639, 
+      657
+    ], 
+    "state": "KS", 
+    "party": "Republican"
+  }, 
+  "300082": {
+    "bioguide": "R000146", 
+    "last": "Reid", 
+    "name": "Harry Reid", 
+    "url": "http://www.reid.senate.gov", 
+    "votes": [
+      654, 
+      657
+    ], 
+    "state": "NV", 
+    "party": "Democrat"
+  }, 
+  "300081": {
+    "bioguide": "R000122", 
+    "last": "Reed", 
+    "name": "Jack Reed", 
+    "url": "http://www.reed.senate.gov", 
+    "votes": [
+      652, 
+      657
+    ], 
+    "state": "RI", 
+    "party": "Democrat"
+  }, 
+  "300080": {
+    "bioguide": "P000590", 
+    "last": "Pryor", 
+    "name": "Mark L. Pryor", 
+    "url": "http://www.pryor.senate.gov", 
+    "votes": [
+      656, 
+      657
+    ], 
+    "state": "AR", 
+    "party": "Democrat"
+  }, 
+  "300089": {
+    "bioguide": "S000320", 
+    "last": "Shelby", 
+    "name": "Richard C. Shelby", 
+    "url": "http://www.shelby.senate.gov", 
+    "votes": [
+      652, 
+      657
+    ], 
+    "state": "AL", 
+    "party": "Republican"
+  }, 
+  "300088": {
+    "bioguide": "S001141", 
+    "last": "Sessions", 
+    "name": "Jeff Sessions", 
+    "url": "http://www.sessions.senate.gov", 
+    "votes": [
+      643, 
+      657
+    ], 
+    "state": "AL", 
+    "party": "Republican"
+  }, 
+  "400418": {
+    "bioguide": "V000127", 
+    "last": "Vitter", 
+    "name": "David Vitter", 
+    "url": "http://www.vitter.senate.gov", 
+    "votes": [
+      628, 
+      657
+    ], 
+    "state": "LA", 
+    "party": "Republican"
+  }, 
+  "300009": {
+    "bioguide": "B000468", 
+    "last": "Bingaman", 
+    "name": "Jeff Bingaman", 
+    "url": "http://bingaman.senate.gov", 
+    "votes": [
+      649, 
+      657
+    ], 
+    "state": "NM", 
+    "party": "Democrat"
+  }, 
+  "300008": {
+    "bioguide": "B000444", 
+    "last": "Biden", 
+    "name": "Joseph Biden", 
+    "url": "http://biden.senate.gov", 
+    "votes": [
+      448, 
+      657
+    ], 
+    "state": "DE", 
+    "party": "Democrat"
+  }, 
+  "300007": {
+    "bioguide": "B000382", 
+    "last": "Bennett", 
+    "name": "Robert Bennett", 
+    "url": "http://bennett.senate.gov", 
+    "votes": [
+      649, 
+      657
+    ], 
+    "state": "UT", 
+    "party": "Republican"
+  }, 
+  "300006": {
+    "bioguide": "B001233", 
+    "last": "Bayh", 
+    "name": "Evan Bayh", 
+    "url": "http://bayh.senate.gov", 
+    "votes": [
+      638, 
+      657
+    ], 
+    "state": "IN", 
+    "party": "Democrat"
+  }, 
+  "300005": {
+    "bioguide": "B000243", 
+    "last": "Baucus", 
+    "name": "Max Baucus", 
+    "url": "http://www.baucus.senate.gov", 
+    "votes": [
+      655, 
+      657
+    ], 
+    "state": "MT", 
+    "party": "Democrat"
+  }, 
+  "300003": {
+    "bioguide": "A000109", 
+    "last": "Allard", 
+    "name": "Wayne Allard", 
+    "url": "http://allard.senate.gov", 
+    "votes": [
+      634, 
+      657
+    ], 
+    "state": "CO", 
+    "party": "Republican"
+  }, 
+  "300002": {
+    "bioguide": "A000360", 
+    "last": "Alexander", 
+    "name": "Lamar Alexander", 
+    "url": "http://www.alexander.senate.gov", 
+    "votes": [
+      628, 
+      657
+    ], 
+    "state": "TN", 
+    "party": "Republican"
+  }, 
+  "300001": {
+    "bioguide": "A000069", 
+    "last": "Akaka", 
+    "name": "Daniel K. Akaka", 
+    "url": "http://akaka.senate.gov", 
+    "votes": [
+      655, 
+      657
+    ], 
+    "state": "HI", 
+    "party": "Democrat"
+  }, 
+  "400194": {
+    "bioguide": "I000055", 
+    "last": "Isakson", 
+    "name": "Johnny Isakson", 
+    "url": "http://www.isakson.senate.gov", 
+    "votes": [
+      644, 
+      657
+    ], 
+    "state": "GA", 
+    "party": "Republican"
+  }, 
+  "400621": {
+    "bioguide": "M001162", 
+    "last": "Martinez", 
+    "name": "Mel Martinez", 
+    "url": "http://martinez.senate.gov", 
+    "votes": [
+      645, 
+      657
+    ], 
+    "state": "FL", 
+    "party": "Republican"
+  }, 
+  "400357": {
+    "bioguide": "S000033", 
+    "last": "Sanders", 
+    "name": "Bernard Sanders", 
+    "url": "http://www.sanders.senate.gov", 
+    "votes": [
+      651, 
+      657
+    ], 
+    "state": "VT", 
+    "party": "Independent"
+  }, 
+  "400629": {
+    "bioguide": "O000167", 
+    "last": "Obama", 
+    "name": "Barack Obama", 
+    "url": "http://obama.senate.gov/", 
+    "votes": [
+      352, 
+      655
+    ], 
+    "state": "IL", 
+    "party": "Democrat"
+  }, 
+  "400546": {
+    "bioguide": "T000250", 
+    "last": "Thune", 
+    "name": "John Thune", 
+    "url": "http://www.thune.senate.gov", 
+    "votes": [
+      653, 
+      657
+    ], 
+    "state": "SD", 
+    "party": "Republican"
+  }, 
+  "412251": {
+    "bioguide": "B001261", 
+    "last": "Barrasso", 
+    "name": "John Barrasso", 
+    "url": "http://www.barrasso.senate.gov", 
+    "votes": [
+      431, 
+      431
+    ], 
+    "state": "WY", 
+    "party": "Republican"
+  }, 
+  "400050": {
+    "bioguide": "B000944", 
+    "last": "Brown", 
+    "name": "Sherrod Brown", 
+    "url": "http://www.brown.senate.gov", 
+    "votes": [
+      647, 
+      657
+    ], 
+    "state": "OH", 
+    "party": "Democrat"
+  }, 
+  "300078": {
+    "bioguide": "N000032", 
+    "last": "Nelson", 
+    "name": "Bill Nelson", 
+    "url": "http://www.billnelson.senate.gov", 
+    "votes": [
+      646, 
+      657
+    ], 
+    "state": "FL", 
+    "party": "Democrat"
+  }, 
+  "300072": {
+    "bioguide": "M000355", 
+    "last": "McConnell", 
+    "name": "Mitch McConnell", 
+    "url": "http://www.mcconnell.senate.gov", 
+    "votes": [
+      656, 
+      657
+    ], 
+    "state": "KY", 
+    "party": "Republican"
+  }, 
+  "300073": {
+    "bioguide": "M000702", 
+    "last": "Mikulski", 
+    "name": "Barbara A. Mikulski", 
+    "url": "http://www.mikulski.senate.gov", 
+    "votes": [
+      646, 
+      657
+    ], 
+    "state": "MD", 
+    "party": "Democrat"
+  }, 
+  "300070": {
+    "bioguide": "L000504", 
+    "last": "Lugar", 
+    "name": "Richard G. Lugar", 
+    "url": "http://lugar.senate.gov/", 
+    "votes": [
+      651, 
+      657
+    ], 
+    "state": "IN", 
+    "party": "Republican"
+  }, 
+  "300071": {
+    "bioguide": "M000303", 
+    "last": "McCain", 
+    "name": "John McCain", 
+    "url": "http://www.mccain.senate.gov", 
+    "votes": [
+      237, 
+      657
+    ], 
+    "state": "AZ", 
+    "party": "Republican"
+  }, 
+  "300076": {
+    "bioguide": "M001111", 
+    "last": "Murray", 
+    "name": "Patty Murray", 
+    "url": "http://www.murray.senate.gov", 
+    "votes": [
+      643, 
+      657
+    ], 
+    "state": "WA", 
+    "party": "Democrat"
+  }, 
+  "300077": {
+    "bioguide": "N000180", 
+    "last": "Nelson", 
+    "name": "Ben Nelson", 
+    "url": "http://bennelson.senate.gov/", 
+    "votes": [
+      649, 
+      657
+    ], 
+    "state": "NE", 
+    "party": "Democrat"
+  }, 
+  "300075": {
+    "bioguide": "M001153", 
+    "last": "Murkowski", 
+    "name": "Lisa Murkowski", 
+    "url": "http://www.murkowski.senate.gov", 
+    "votes": [
+      642, 
+      657
+    ], 
+    "state": "AK", 
+    "party": "Republican"
+  }, 
+  "400432": {
+    "bioguide": "W000437", 
+    "last": "Wicker", 
+    "name": "Roger F. Wicker", 
+    "url": "http://www.wicker.senate.gov", 
+    "votes": [
+      205, 
+      215
+    ], 
+    "state": "MS", 
+    "party": "Republican"
+  }, 
+  "400105": {
+    "bioguide": "D000595", 
+    "last": "DeMint", 
+    "name": "Jim DeMint", 
+    "url": "http://demint.senate.gov", 
+    "votes": [
+      635, 
+      657
+    ], 
+    "state": "SC", 
+    "party": "Republican"
+  }, 
+  "400064": {
+    "bioguide": "C000141", 
+    "last": "Cardin", 
+    "name": "Benjamin L. Cardin", 
+    "url": "http://www.cardin.senate.gov", 
+    "votes": [
+      652, 
+      657
+    ], 
+    "state": "MD", 
+    "party": "Democrat"
+  }, 
+  "412249": {
+    "bioguide": "W000803", 
+    "last": "Webb", 
+    "name": "Jim Webb", 
+    "url": "http://webb.senate.gov/", 
+    "votes": [
+      650, 
+      657
+    ], 
+    "state": "VA", 
+    "party": "Democrat"
+  }, 
+  "412248": {
+    "bioguide": "C001071", 
+    "last": "Corker", 
+    "name": "Bob Corker", 
+    "url": "http://www.corker.senate.gov", 
+    "votes": [
+      647, 
+      657
+    ], 
+    "state": "TN", 
+    "party": "Republican"
+  }, 
+  "412247": {
+    "bioguide": "W000802", 
+    "last": "Whitehouse", 
+    "name": "Sheldon Whitehouse", 
+    "url": "http://www.whitehouse.senate.gov", 
+    "votes": [
+      654, 
+      657
+    ], 
+    "state": "RI", 
+    "party": "Democrat"
+  }, 
+  "412246": {
+    "bioguide": "C001070", 
+    "last": "Casey", 
+    "name": "Robert P. Casey, Jr.", 
+    "url": "http://www.casey.senate.gov", 
+    "votes": [
+      657, 
+      657
+    ], 
+    "state": "PA", 
+    "party": "Democrat"
+  }, 
+  "412244": {
+    "bioguide": "T000464", 
+    "last": "Tester", 
+    "name": "Jon Tester", 
+    "url": "http://www.tester.senate.gov", 
+    "votes": [
+      650, 
+      657
+    ], 
+    "state": "MT", 
+    "party": "Democrat"
+  }, 
+  "412243": {
+    "bioguide": "M001170", 
+    "last": "McCaskill", 
+    "name": "Claire McCaskill", 
+    "url": "http://www.mccaskill.senate.gov", 
+    "votes": [
+      641, 
+      657
+    ], 
+    "state": "MO", 
+    "party": "Democrat"
+  }, 
+  "412242": {
+    "bioguide": "K000367", 
+    "last": "Klobuchar", 
+    "name": "Amy Klobuchar", 
+    "url": "http://www.klobuchar.senate.gov", 
+    "votes": [
+      650, 
+      657
+    ], 
+    "state": "MN", 
+    "party": "Democrat"
+  }, 
+  "300069": {
+    "bioguide": "L000447", 
+    "last": "Lott", 
+    "name": "Trent Lott", 
+    "url": "http://lott.senate.gov/", 
+    "votes": [
+      413, 
+      442
+    ], 
+    "state": "MS", 
+    "party": "Republican"
+  }, 
+  "300068": {
+    "bioguide": "L000035", 
+    "last": "Lincoln", 
+    "name": "Blanche Lincoln", 
+    "url": "http://lincoln.senate.gov/", 
+    "votes": [
+      634, 
+      657
+    ], 
+    "state": "AR", 
+    "party": "Democrat"
+  }, 
+  "300100": {
+    "bioguide": "W000779", 
+    "last": "Wyden", 
+    "name": "Ron Wyden", 
+    "url": "http://www.wyden.senate.gov", 
+    "votes": [
+      644, 
+      657
+    ], 
+    "state": "OR", 
+    "party": "Democrat"
+  }, 
+  "300061": {
+    "bioguide": "K000305", 
+    "last": "Kohl", 
+    "name": "Herb Kohl", 
+    "url": "http://kohl.senate.gov/", 
+    "votes": [
+      657, 
+      657
+    ], 
+    "state": "WI", 
+    "party": "Democrat"
+  }, 
+  "300060": {
+    "bioguide": "K000148", 
+    "last": "Kerry", 
+    "name": "John F. Kerry", 
+    "url": "http://www.kerry.senate.gov", 
+    "votes": [
+      629, 
+      657
+    ], 
+    "state": "MA", 
+    "party": "Democrat"
+  }, 
+  "300063": {
+    "bioguide": "L000550", 
+    "last": "Landrieu", 
+    "name": "Mary L. Landrieu", 
+    "url": "http://www.landrieu.senate.gov", 
+    "votes": [
+      639, 
+      657
+    ], 
+    "state": "LA", 
+    "party": "Democrat"
+  }, 
+  "300062": {
+    "bioguide": "K000352", 
+    "last": "Kyl", 
+    "name": "Jon Kyl", 
+    "url": "http://kyl.senate.gov/", 
+    "votes": [
+      644, 
+      657
+    ], 
+    "state": "AZ", 
+    "party": "Republican"
+  }, 
+  "300065": {
+    "bioguide": "L000174", 
+    "last": "Leahy", 
+    "name": "Patrick J. Leahy", 
+    "url": "http://www.leahy.senate.gov", 
+    "votes": [
+      652, 
+      657
+    ], 
+    "state": "VT", 
+    "party": "Democrat"
+  }, 
+  "300064": {
+    "bioguide": "L000123", 
+    "last": "Lautenberg", 
+    "name": "Frank R. Lautenberg", 
+    "url": "http://www.lautenberg.senate.gov", 
+    "votes": [
+      641, 
+      657
+    ], 
+    "state": "NJ", 
+    "party": "Democrat"
+  }, 
+  "300067": {
+    "bioguide": "L000304", 
+    "last": "Lieberman", 
+    "name": "Joseph I. Lieberman", 
+    "url": "http://lieberman.senate.gov/", 
+    "votes": [
+      636, 
+      657
+    ], 
+    "state": "CT", 
+    "party": "Independent"
+  }, 
+  "300066": {
+    "bioguide": "L000261", 
+    "last": "Levin", 
+    "name": "Carl Levin", 
+    "url": "http://www.levin.senate.gov", 
+    "votes": [
+      649, 
+      657
+    ], 
+    "state": "MI", 
+    "party": "Democrat"
+  }, 
+  "400272": {
+    "bioguide": "M000639", 
+    "last": "Men\u00e9ndez", 
+    "name": "Robert Menendez", 
+    "url": "http://menendez.senate.gov", 
+    "votes": [
+      646, 
+      657
+    ], 
+    "state": "NJ", 
+    "party": "Democrat"
+  }, 
+  "400054": {
+    "bioguide": "B001135", 
+    "last": "Burr", 
+    "name": "Richard Burr", 
+    "url": "http://www.burr.senate.gov", 
+    "votes": [
+      638, 
+      657
+    ], 
+    "state": "NC", 
+    "party": "Republican"
+  }, 
+  "300054": {
+    "bioguide": "H001016", 
+    "last": "Hutchison", 
+    "name": "Kay Bailey Hutchison", 
+    "url": "http://hutchison.senate.gov/", 
+    "votes": [
+      642, 
+      657
+    ], 
+    "state": "TX", 
+    "party": "Republican"
+  }, 
+  "300055": {
+    "bioguide": "I000024", 
+    "last": "Inhofe", 
+    "name": "James M. Inhofe", 
+    "url": "http://www.inhofe.senate.gov", 
+    "votes": [
+      622, 
+      657
+    ], 
+    "state": "OK", 
+    "party": "Republican"
+  }, 
+  "300056": {
+    "bioguide": "I000025", 
+    "last": "Inouye", 
+    "name": "Daniel K. Inouye", 
+    "url": "http://inouye.senate.gov/", 
+    "votes": [
+      589, 
+      657
+    ], 
+    "state": "HI", 
+    "party": "Democrat"
+  }, 
+  "300050": {
+    "bioguide": "H001028", 
+    "last": "Hagel", 
+    "name": "Charles Hagel", 
+    "url": "http://hagel.senate.gov/", 
+    "votes": [
+      606, 
+      657
+    ], 
+    "state": "NE", 
+    "party": "Republican"
+  }, 
+  "300051": {
+    "bioguide": "H000206", 
+    "last": "Harkin", 
+    "name": "Tom Harkin", 
+    "url": "http://www.harkin.senate.gov", 
+    "votes": [
+      639, 
+      657
+    ], 
+    "state": "IA", 
+    "party": "Democrat"
+  }, 
+  "300052": {
+    "bioguide": "H000338", 
+    "last": "Hatch", 
+    "name": "Orrin G. Hatch", 
+    "url": "http://www.hatch.senate.gov", 
+    "votes": [
+      647, 
+      657
+    ], 
+    "state": "UT", 
+    "party": "Republican"
+  }, 
+  "300058": {
+    "bioguide": "J000177", 
+    "last": "Johnson", 
+    "name": "Tim Johnson", 
+    "url": "http://www.johnson.senate.gov", 
+    "votes": [
+      346, 
+      657
+    ], 
+    "state": "SD", 
+    "party": "Democrat"
+  }, 
+  "300059": {
+    "bioguide": "K000105", 
+    "last": "Kennedy", 
+    "name": "Edward Kennedy", 
+    "url": "http://kennedy.senate.gov/", 
+    "votes": [
+      529, 
+      657
+    ], 
+    "state": "MA", 
+    "party": "Democrat"
+  }, 
+  "400619": {
+    "bioguide": "S001163", 
+    "last": "Salazar", 
+    "name": "Ken Salazar", 
+    "url": "http://salazar.senate.gov", 
+    "votes": [
+      657, 
+      657
+    ], 
+    "state": "CO", 
+    "party": "Democrat"
+  }, 
+  "300043": {
+    "bioguide": "F000062", 
+    "last": "Feinstein", 
+    "name": "Dianne Feinstein", 
+    "url": "http://www.feinstein.senate.gov", 
+    "votes": [
+      639, 
+      657
+    ], 
+    "state": "CA", 
+    "party": "Democrat"
+  }, 
+  "300042": {
+    "bioguide": "F000061", 
+    "last": "Feingold", 
+    "name": "Russell Feingold", 
+    "url": "http://feingold.senate.gov", 
+    "votes": [
+      657, 
+      657
+    ], 
+    "state": "WI", 
+    "party": "Democrat"
+  }, 
+  "300041": {
+    "bioguide": "E000285", 
+    "last": "Enzi", 
+    "name": "Michael B. Enzi", 
+    "url": "http://www.enzi.senate.gov", 
+    "votes": [
+      636, 
+      657
+    ], 
+    "state": "WY", 
+    "party": "Republican"
+  }, 
+  "300040": {
+    "bioguide": "E000194", 
+    "last": "Ensign", 
+    "name": "John Ensign", 
+    "url": "http://ensign.senate.gov", 
+    "votes": [
+      627, 
+      657
+    ], 
+    "state": "NV", 
+    "party": "Republican"
+  }, 
+  "300047": {
+    "bioguide": "G000359", 
+    "last": "Graham", 
+    "name": "Lindsey Graham", 
+    "url": "http://www.lgraham.senate.gov", 
+    "votes": [
+      610, 
+      657
+    ], 
+    "state": "SC", 
+    "party": "Republican"
+  }, 
+  "300049": {
+    "bioguide": "G000445", 
+    "last": "Gregg", 
+    "name": "Judd Gregg", 
+    "url": "http://gregg.senate.gov/", 
+    "votes": [
+      631, 
+      657
+    ], 
+    "state": "NH", 
+    "party": "Republican"
+  }, 
+  "300048": {
+    "bioguide": "G000386", 
+    "last": "Grassley", 
+    "name": "Chuck Grassley", 
+    "url": "http://www.grassley.senate.gov", 
+    "votes": [
+      657, 
+      657
+    ], 
+    "state": "IA", 
+    "party": "Republican"
+  }, 
+  "300036": {
+    "bioguide": "D000407", 
+    "last": "Domenici", 
+    "name": "Pete Domenici", 
+    "url": "http://domenici.senate.gov", 
+    "votes": [
+      622, 
+      657
+    ], 
+    "state": "NM", 
+    "party": "Republican"
+  }, 
+  "300037": {
+    "bioguide": "D000432", 
+    "last": "Dorgan", 
+    "name": "Byron Dorgan", 
+    "url": "http://dorgan.senate.gov", 
+    "votes": [
+      645, 
+      657
+    ], 
+    "state": "ND", 
+    "party": "Democrat"
+  }, 
+  "300034": {
+    "bioguide": "D000388", 
+    "last": "Dodd", 
+    "name": "Christopher Dodd", 
+    "url": "http://dodd.senate.gov", 
+    "votes": [
+      486, 
+      657
+    ], 
+    "state": "CT", 
+    "party": "Democrat"
+  }, 
+  "300035": {
+    "bioguide": "D000601", 
+    "last": "Dole", 
+    "name": "Elizabeth Dole", 
+    "url": "http://dole.senate.gov/", 
+    "votes": [
+      622, 
+      657
+    ], 
+    "state": "NC", 
+    "party": "Republican"
+  }, 
+  "300030": {
+    "bioguide": "C000880", 
+    "last": "Crapo", 
+    "name": "Mike Crapo", 
+    "url": "http://www.crapo.senate.gov", 
+    "votes": [
+      633, 
+      657
+    ], 
+    "state": "ID", 
+    "party": "Republican"
+  }, 
+  "300038": {
+    "bioguide": "D000563", 
+    "last": "Durbin", 
+    "name": "Richard J. Durbin", 
+    "url": "http://www.durbin.senate.gov", 
+    "votes": [
+      652, 
+      657
+    ], 
+    "state": "IL", 
+    "party": "Democrat"
+  }
+}

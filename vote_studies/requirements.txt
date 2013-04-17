@@ -1,0 +1,4 @@
+scrapelib
+argparse
+logging
+lxml>=2.2

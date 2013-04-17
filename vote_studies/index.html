@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+        <link rel="stylesheet" href="src/css/normalize.css">
+        <link rel="stylesheet" href="src/css/main.css">
+        <link rel="stylesheet" href="src/css/template.css">
+        <link rel="stylesheet" href="src/css/chosen.css">
+        <link href='http://fonts.googleapis.com/css?family=Arvo' rel='stylesheet' type='text/css'>   
+        <link href='http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.0/themes/base/jquery-ui.css' rel='stylesheet' type='text/css'>   
+        <script src="src/js/vendor/modernizr-2.6.2.min.js"></script>
+        <style>
+.node {
+  stroke: #fff;
+  stroke-width: 1px;
+}
+
+.link {
+    stroke: #999;
+    stroke-opacity: 0.7;
+    stroke-width: 0.5;
+}
+
+.slider {
+    width: 300px;
+    height: 5px;
+    margin: 0 3px 0 0;
+}
+
+.tip {
+    background: #FFF;
+    border: 1px solid gray;
+    padding: 7px;
+    font-size: 12px;
+}
+
+.red {
+    color: #900;
+    font-weight: bold;
+}
+
+.blue {
+    color: #009;
+    font-weight: bold;
+}
+        </style>        
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+        <!-- Add your site or application content here -->
+        <div class="main">
+            <img class="logo" src="src/img/logo.png" />
+            <div class="title">The Senate Social Network</div>
+            <div class="intro"></div>
+            <div class="control">
+                <div class="left">
+                    <!--<div class="label">This diagram examines factions in the Senate by connecting each lawmaker as a network.</div>-->
+                    <div class="label">Connect <span id="members">senators</span> who voted together at least <span id="thresh">75%</span> of the time</div>
+                    <div class="slider" id="slider"></div>
+                </div>        
+                <div class="right">
+                    <div class="subhead">SESSION</div>
+                    <select id="sessions" data-placeholder="Choose a session..." style="width:180px;" class="chzn-select">
+                    </select>
+                </div>
+            </div>
+            <div class="funstuff">
+                <div class="left">
+                	<div class="canvas" id="canvas" style="width:400px;float:left"></div>
+                </div>
+                <div class="right">
+                    <div class="subhead">LAWMAKER</div>
+                    <select id="roster" data-placeholder="Choose a senator..." style="width:180px;" class="chzn-select">
+                        
+                    </select>
+                    <div class="kiosk" id="kiosk">
+                        <div class="head"></div>            
+                        <div class="details"></div>            
+                        <div class="pic"></div>  
+                        <div class="databox">
+                            <div id="graph"></div>                        
+                        </div>                
+                        <!--<div class="bff"></div>-->
+                    </div>
+                </div>
+            </div>
+            <div style="clear:both"></div>
+            <div class="notes">SOURCE: <a href="http://www.govtrack.us/">GovTrack.us</a>.<br/>NOTE: Missed votes count as not voting with any other senator.</div>
+        	<div class="btn"><a id="data" href="https://github.com/wilson428/vote_studies/tree/master/data/output/senate" target="_blank">DATA</a></div>    
+    		<div class="btn"><a id="source" href="https://github.com/wilson428/vote_studies" target="_blank">SOURCE</a></div>
+            <div class="btn" id="embed">EMBED</div>    
+            <div style="clear:both"></div>
+        </div>
+
+        <div class="embedbox" id="embedbox">
+            <img id="close" src="http://4b067982625541b415aa-69589cd039d332357e4543fc28818765.r17.cf1.rackcdn.com/close.gif" /><br />
+		    <textarea id="embedcode" style="margin-left: 15px; border: none; width:350px; height: 65px"></textarea>		
+    	</div>
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/jquery-ui.min.js"></script>
+        <script>window.jQuery || document.write('<script src="src/js/vendor/jquery-1.8.3.min.js"><\/script>')</script>
+        <script src="src/js/plugins.js"></script>
+        <script src="src/js/main.js"></script>
+        <script src="src/js/vendor/chosen.jquery.js"></script>
+        <script src="src/js/vendor/d3.v3.min.js"></script>
+        <script src="src/js/init.js"></script>
+        <script>
+/*global d3 tooltip*/
+var width = 380,
+    height = 380,
+    margin = 50,
+    sessions = [107, 113],
+    floor = 12,
+    start = 75,
+    selected = '',
+    threshold = start;
+    
+var svg = d3.select("#canvas").append("svg")
+    .attr("width", width)
+    .attr("height", height);
+
+//color by party
+var color = function(d) {
+    return (d.party !== "D" && d.party !== "R") ? "#90C" : (d.party === 'R' ? "#900" : "#009");
+};
+    
+for (var s=sessions[0]; s <= sessions[1]; s += 1) {
+    $("<option />", {
+        value: s,
+        html: s + " (" + (1787 + s * 2) + "-" + (1787 + s * 2 + 1) + ")"
+    }).appendTo("#sessions");
+}
+
+d3.select("#sessions > option[value='113']").attr("selected", "true");
+
+load(113);
+
+d3.select("#sessions")
+    .on("change", function() {
+        load(this.selectedIndex + 107);
+    });    
+
+function load(session) {
+    $.when($.get("data/output/senate/" + session + "/crossvote.json"), $.get("data/output/senate/" + session + "/phonebook.json")).then(function(d1, d2) {
+        make(d1[0], d2[0]);
+        //init(JSON.parse(d1[0]), JSON.parse(d2[0]));
+    });
+}
+
+var members,
+    nodes,
+    links,
+    every_link,
+    besties,
+    parties,
+    nodebook;
+
+function make(crossvote, phonebook) {
+    $('#slider').slider("value", threshold);
+    $('#thresh').html(threshold + "%");
+    $('#roster > option').remove();
+    $('#roster').append("<option value=''></option>");
+    unselect();
+    
+    svg.selectAll("g").remove();
+    
+    members = d3.keys(phonebook);
+    nodes = {};
+    links = {};
+    every_link = {};
+    besties = {};
+    parties = {D: 0, R: 0};
+    selected = '';
+    
+
+    // make list of nodes
+    members
+        .filter(function(element) { return phonebook[element].votes[1] >= floor; })
+        .sort(function(a, b) { return (phonebook[a].last > phonebook[b].last) ? 1 : -1; })    
+        .forEach(function(v, i) {
+            nodes[v] = phonebook[v];
+            nodes[v].id = v;
+            nodes[v].fullparty = nodes[v].party;
+            nodes[v].party = nodes[v].party[0];
+            nodes[v].title = nodes[v].name + " (" + nodes[v].party[0] + "-" + nodes[v].state + ")";
+            
+            parties[(nodes[v].party === 'R') ? 'R' : 'D'] += 1;
+            
+            $("<option />", {
+                value: nodes[v].id,
+                html: nodes[v].title
+            }).appendTo("#roster");     
+        });
+
+    $("#roster").chosen();    
+    $("#roster").val('').trigger("liszt:updated");
+    
+    /*
+    // party count
+    var parties = d3.nest()
+        .key(function(d) {
+            return (d.party === 'R' ? 'R' : 'D'); 
+        })
+        .entries(d3.values(nodes));
+    */
+
+    $.each(crossvote, function(i, v) {
+        $.each(v, function(ii, vv) {
+            if (vv[1] >= floor) {
+                every_link[i + "_" + ii] = {
+                    source: nodes[i],
+                    target: nodes[ii], 
+                    common: vv[0],
+                    total: vv[1],
+                    rate: vv[1] > 1 ? vv[0] / vv[1] : 0
+                };
+            }
+        });
+    });
+        
+    //optional party filter    
+    /*
+    //get besties
+    var besties = {}
+    $.each(every_link, function(i, v) {        
+        var edges = i.split("_");
+        if (!besties.hasOwnProperty(edges[0])) {
+            besties[edges[0]] = [0, []];
+        }
+        if (!besties.hasOwnProperty(edges[1])) {
+            besties[edges[1]] = [0, []];
+        }
+        if (v.rate > besties[edges[0]][0]) {
+            besties[edges[0]][0] = v.rate;
+            besties[edges[0]][1] = [edges[1]];
+        } else if (v.rate === besties[edges[0]][0]) {
+            besties[edges[0]][1].push([edges[1]]);            
+        }
+        
+        if (v.rate > besties[edges[1]][0]) {
+            besties[edges[1]][0] = v.rate;
+            besties[edges[1]][1] = [edges[0]];
+        } else if (v.rate === besties[edges[1]][0]) {
+            besties[edges[1]][1].push([edges[0]]);            
+        }
+    });    
+    
+    */
+    
+        
+    //every_link now has all possible connections    
+    links = filtered(threshold / 100, floor);
+    
+    function filtered(thresh, floor) {
+        var g = [];
+        
+        //clear node references
+        nodebook = {};
+        
+        $.each(every_link, function(i, v) {
+            if (!g.hasOwnProperty(i) && v.total >= floor && v.rate >= thresh) {
+                g[i] = v;
+                //add to dictionary of links per nodes
+                var edges = i.split("_");
+                if (!nodebook.hasOwnProperty(edges[0])) {
+                    nodebook[edges[0]] = [];
+                }
+                if (!nodebook.hasOwnProperty(edges[1])) {
+                    nodebook[edges[1]] = [];
+                }
+                nodebook[edges[0]].push(edges[1]); 
+                nodebook[edges[1]].push(edges[0]);
+            }
+        });
+        return g;
+    }
+
+    //console.log(JSON.stringify(d3.values(links)));
+
+    var force = d3.layout.force()
+        .nodes(d3.values(nodes))
+        .links(d3.values(links))
+        //.nodes(d3.values(nodes).filter(function(d) { return d.party === 'R' }))
+        //.links(d3.values(links).filter(function(d) { return d.target.party === 'R' && d.source.party === 'R' }))
+        .size([width - 2 * margin, height - 2 * margin])
+        .charge(-150)
+        .gravity(0.4)
+        .on("tick", tick)
+        .start();
+        
+    var network = svg.append("g").attr("transform", "translate(50,50)");
+
+    var link = network.selectAll(".link")
+        .data(force.links())
+        .enter().append("line")
+        .attr("class", "link");
+        
+    var node = network.selectAll(".node")
+        .data(force.nodes())
+        .enter().append("circle")
+        .attr("class", "node")
+        .attr("id", function(d) { return "node-" + d.id; })
+        .attr("r", 5)
+        //.style("opacity", function(d) { return d.weight > 0 ? 1 : 0; })
+        .on("mouseover", function(d) {
+            //highlight(d.id);
+            tooltip.html(d.title + "<br /><em>Click to highlight</em>");
+            return tooltip.style("visibility", "visible");
+        })
+        .on("mousemove", function() { return tooltip.style("top", (event.pageY - 10)+"px").style("left",(event.pageX + 10)+"px");})
+        .on("mouseout", function() { 
+            //d3.selectAll(".node").style({ 'stroke-width': 1, stroke: '#FFF' });
+            //d3.selectAll(".node").style("fill", color);
+            //unselect();
+            return tooltip.style("visibility", "hidden");
+        })
+        .on("click", function (d) {
+            highlight(d.id);            
+            select(d.id);            
+        })
+        .style("fill", color);
+        
+    function tick () {
+      node.attr("cx", function(d) { return d.x; })
+          .attr("cy", function(d) { return d.y; });
+    
+      link.attr("x1", function(d) { return d.source.x; })
+          .attr("y1", function(d) { return d.source.y; })
+          .attr("x2", function(d) { return d.target.x; })
+          .attr("y2", function(d) { return d.target.y; });
+    }
+    
+    $('#slider').bind("slide", function(evt, ui) {    
+        //unselect();
+        threshold = ui.value;
+        $('#thresh').html(ui.value + "%");
+        links = filtered(ui.value / 100, floor);
+        force.links(d3.values(links));        
+        
+        link = network.selectAll(".link")
+            .data(force.links());
+
+        node = network.selectAll(".node")
+            .data(force.nodes());
+
+        link.enter()
+            .insert("line", ".node")        
+            .attr("class", function(d) { return "link" });
+            
+        link.exit()
+            .attr("class", function(d) { return "chris"; })
+            .remove();
+            
+        force.start();
+        highlight();
+        
+        maketext();  
+        /*
+        if (nodebook[mid]) {
+        }*/
+        
+        
+    });
+    
+    function maketext() {
+        if (selected !== '') {
+            var splits = $.extend(true, {}, nodes[selected].splits[threshold]),
+                text = '';
+            splits[nodes[selected].party] -= 1;
+            
+            if (nodes[selected].party === 'R') {
+                text = "Voted with <span class='blue'>" + splits.D + " of " + parties.D + "</span> Democrats or independents and <span class='red'>" + splits.R + " of " + (parties.R - 1) + "</span> fellow Republicans at least " + threshold + " percent of the time.<br />";                    
+            } else {
+                text = "Voted with <span class='blue'>" + splits.D + " of " + (parties.D - 1) + "</span> fellow Democrats or independents and <span class='red'>" + splits.R + " of " + parties.R + "</span> fellow Republicans at least " + threshold + " percent of the time.<br />";
+            }            
+            $('#kiosk > .databox').html(
+                "<div class='subhead'>Connections</div>" + text
+            );            
+        }      
+    }
+    
+    $('#roster').bind("change", function() {        
+        highlight($(this).val());
+        select($(this).val());
+        //d3.selectAll(".node").style("fill", color);        
+        //d3.select('#node-' + $(this).val()).style("fill", "orange");        
+    });
+    
+    svg.on("click", function() {
+        if (d3.event.toElement.tagName === "svg") {
+            unhighlight();
+            unselect();
+        }
+    });
+    
+    
+    function select (mid) {   
+        $("#roster").val(mid).trigger("liszt:updated");
+        console.log($('#roster').val());
+        //fill in info box               
+        $('#kiosk > .head').html(nodes[mid].name);
+        $('#kiosk > .details').html(nodes[mid].party + "-" + nodes[mid].state);
+        $('#kiosk > .pic').html("<img class='mug' src='' />");
+        $(".mug").error(function(e) {
+            $('.mug').attr("src", "src/img/noone.png");        
+        });
+        $('.mug').attr("src", "//bioguide.congress.gov/bioguide/photo/" + nodes[mid].bioguide[0] + "/" + nodes[mid].bioguide + ".jpg" );
+        
+        var myconnections = d3.values(every_link).filter(function(d) {
+            return (d.source.id === mid || d.target.id === mid);        
+        });
+        
+        if (!nodes[mid].hasOwnProperty("splits")) {        
+            var splits = [];
+            // for each percentage value, calculate partisanship score
+            for (var c = 0; c <= 100; c += 1) {
+                var split = {D: 0, R: 0};
+                var connections = myconnections.filter(function(d) {
+                    return (100 * d.common / d.total >= c);
+                });
+                var byparty = d3.nest(connections)
+                    .key(function(d) {
+                        var other = (d.source.id === mid) ? d.target : d.source;
+                        //this is lazy, but I believe all independents are Dem caucusers back to 107
+                        return (other.party === 'R' ? 'R' : 'D');
+                    })
+                    .entries(connections);
+                for (var b in byparty) {
+                    split[byparty[b].key] = byparty[b].values.length;
+                }
+                split[nodes[mid].party] += 1;
+                split.R_ratio = split.R / parties.R;
+                split.D_ratio = split.D / parties.D;
+                
+                if (nodes[mid].party === 'R') {
+                    split.score = split.D_ratio / split.R_ratio;
+                } else {
+                    split.score = split.R_ratio / split.D_ratio;
+                }
+                splits.push(split);
+            }
+            nodes[mid].splits = splits;
+        }
+        maketext();
+        /*
+        var bffs = "";
+        $.each(besties[mid][1], function(i, v) {
+            bffs += nodes[v].title + "<br />";
+        });        
+        $('#kiosk > .bff').html("<div class='subhead'>BFFs</div>" + bffs);
+        */
+    }
+    
+    
+    
+    function unselect() {
+        //clear the kiosk
+        //.style("fill", color);   
+        $('#roster').val('').trigger("liszt:updated");
+        $('#kiosk > div').html("");
+        $('#kiosk > img').attr("src", "");
+        
+    }
+    
+    function unhighlight () {
+        selected = "";
+        //color + size everyone the same
+        d3.selectAll(".node").attr("r", 5);
+    
+        d3.selectAll(".node").style({
+            'stroke-width': 1,
+            stroke: '#FFF'
+        });
+        d3.selectAll(".node").style("fill", color);        
+    }
+    
+    function highlight (mid) { 
+        if (!mid) {
+            if (selected === '') {
+                //unlight();
+                return;
+            }
+            else {
+                mid = selected;
+            }
+        }
+        //dim all nodes except the select one and his/her neighbors
+        selected = mid;
+        d3.selectAll(".node").style({
+            fill: '#CCC'
+        });
+        d3.selectAll(".node").attr("r", 5);
+        
+        d3.select('#node-' + mid).style("fill", "orange");
+        d3.select('#node-' + mid).attr("r", 7);
+
+        if (nodebook[mid]) {
+            var neighbors = 
+                d3.selectAll(".node").filter(function(e) { 
+                    return nodebook[mid].indexOf(e.id) != -1; 
+                });
+            neighbors.style("fill", color);
+        }
+    }
+}
+
+        </script>
+    </body>
+</html>

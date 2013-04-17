@@ -1,0 +1,182 @@
+body {
+    font-family: Arial;
+}
+
+.logo {
+    float: right;
+    margin-right: 10px;
+}
+
+.main {
+    width: 600px;
+    margin: 2px 0 0 10px;
+    padding: 13px 15px 5px 15px;
+    border: 1px solid gray;
+}
+
+.subhead {
+  font-family: 'Roboto', sans-serif;
+  color: steelblue;
+  font-size: 12px;
+  font-weight: bold;
+  margin: 3px 0 0 0;
+}
+
+.title {
+    font-family: 'Arvo', serif;    
+    font-size: 20px;
+}
+
+.intro {
+    font-size: 12px;
+    color: #666;
+    margin-top: 5px;
+    padding-right: 1px;
+}
+
+.control {
+    font-size: 12px;
+    margin-bottom: 10px;
+    height: 50px;
+}
+
+#canvas {
+    width: 400px;
+    height: 400px;
+    margin: 0 5px 0 0;
+    z-index: 10;
+    float: left;
+    border: 1px solid #999;
+}
+
+.kiosk {
+    float: left;
+    width: 160px;
+    min-height: 100px;
+    padding: 10px;
+}
+
+.label {
+    font-size: 13px;
+    margin: 0 0 5px 0;
+    color: #666;
+    line-height:1.2em;
+    height: 30px;
+}
+
+.head {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.details {
+    font-size: 12px;
+}
+
+.mug {
+    width: 125px;
+}
+
+#thresh {
+    font-size: 16px;
+    color: #333;
+    font-weight: bold;
+}
+
+.notes {
+    float: left;
+    font-size: 10px;
+}
+
+.tab {
+    float: right;
+    width: 75px;
+    height: 17px;
+    margin: 2px 0 0 1px;
+    padding-top: 3px;
+    text-align: center;
+    font-size: 12px;
+    background-color: #CCC;
+	border: 2px solid #CCC;
+	cursor: pointer;
+    z-index: 1;
+}
+
+.selected {
+    border-bottom: 1px solid #FFF;    	
+	background-color: #FFF;
+	z-index: 50;
+}
+
+.tabs {
+    position: absolute;
+    top: 159px;
+    left: 9px;
+    width: 580px;
+    z-index: 5;
+}
+
+.btn {
+    width: 75px;
+    height: 20px;
+    padding: 2px 0 0 0;
+	margin: 3px 7px 2px;
+	text-align: center;
+	font-size: 12px;
+	font-family: Arial;
+	background-image:url('http://29455b675072a312ee24-b4d19cabbd7f474cef3d2901009a2b2d.r93.cf1.rackcdn.com/button.png');
+	background-repeat:no-repeat;
+	cursor: pointer;
+	float: right;
+    color: black;
+}
+
+
+.btn a {
+    color: #000;    
+}
+
+a {
+    text-decoration:none;
+    color: #009;
+}
+
+.embedbox {
+    position: absolute;
+    width: 400px;
+    height: 100px;
+    border: 2px solid #666666;
+    background-color: #FFF;
+    left: 115px;
+    top: 100px; 
+    font-size: 10pt;
+    z-index: 25;
+}
+
+.databox {
+    font-size: 12px;
+}
+
+.bff {
+    font-size: 12px;
+    max-height: 90px;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+    
+#close {
+    position: relative;
+    left: 385px;
+    cursor: pointer;
+}
+
+.left {
+    width: 400px;
+    float: left;
+}
+
+.right {
+    width: 180px;
+    float: left;
+    margin-left: 15px;
+}
