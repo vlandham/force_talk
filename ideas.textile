@@ -93,6 +93,11 @@ http://bl.ocks.org/jasondavies/1554783
 convex hull
 http://bl.ocks.org/mbostock/4341699
 
+h3. humor
+
+tmcw midwest tweet:
+https://twitter.com/tmcw/status/292762206855106560
+
 h3. strange expanding nodes
 
 http://bl.ocks.org/GerHobbelt/3104394

@@ -11,19 +11,15 @@
     <script type="text/javascript" src="../js/slide.js"></script>
   </head>
   <body>
-    <h2>Force With Edges</h2>
+    <h2>Link</h2>
     <pre>
       <code class="javascript">
-  link = vis.selectAll("line.link")
-      .data(links);
-
-  // Enter any new links.
-  link.enter().insert("line", ".node")
-      .attr("class", "link")
-      .attr("x1", function(d) { return d.source.x; })
-      .attr("y1", function(d) { return d.source.y; })
-      .attr("x2", function(d) { return d.target.x; })
-      .attr("y2", function(d) { return d.target.y; });
+// what goes into a link?
+{
+  source: 0,     // nodes index or actual node
+  target: 1
+  // ...        // your data
+}
 
       </code>
     </pre>
