@@ -9,9 +9,22 @@
     
     <script type="text/javascript" src="../js/d3.v3.js"></script>
     <script type="text/javascript" src="../js/slide.js"></script>
+    <script type="text/javascript" src="../js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="../js/jquery.highlight.js"></script>
+    <script type="text/javascript">
+      var substeps = ['highlight'];
+
+      function step(cur_step) {
+        if(cur_step == 'highlight') {
+          $('code').highlight('alpha');
+
+        } else if(cur_step == 'more') {
+        }
+      };
+    </script>
   </head>
   <body>
-    <h2>Force Code</h2>
+    <h2></h2>
     <pre>
       <code class="javascript">
 var category_centers = {
