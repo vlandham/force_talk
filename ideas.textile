@@ -1,4 +1,23 @@
 
+h2. TODO
+
+* pseudocode for quadtree
+* explain/understand quadtree. read code
+* more abuse the force images
+* convert size to 1024x768
+* change font size for code
+* break up some code to multiple slides
+* add funny pics to slides
+* implement growing bubble
+* implement multiple force on bubble chart
+* code for bubbles as images
+* add clustered forces
+* add grid layout
+* add force labels
+* figure out ending
+* implement ending
+* add sources slides
+
 h2. Slide Ideas
 
 * Intro to D3 Force "api":https://github.com/mbostock/d3/wiki/Force-Layout
