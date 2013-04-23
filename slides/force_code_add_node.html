@@ -11,10 +11,15 @@
     <script type="text/javascript" src="../js/slide.js"></script>
   </head>
   <body>
-    <h2>Visual Representation</h2>
+    <h2>Visual Representation for Nodes</h2>
     <pre>
       <code class="javascript">
-      // add node to svg
+  node = vis.selectAll("circle.node")
+    .data(nodes)
+    .enter().append("circle")
+    .attr("class", "node")
+    .attr("r", 10)
+    .style("fill", "steelblue");
       </code>
     </pre>
   </body>
