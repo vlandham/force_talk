@@ -490,7 +490,7 @@ $ ->
         .attr("x2", (d) ->  force.nodes().filter((e) -> e.name_hash == d.target)[0].x)
         .attr("y2", (d) ->  force.nodes().filter((e) -> e.name_hash == d.target)[0].y)
 
-    force.start()
+    force.stop()
 
     force.on 'tick', (e) ->
       k = e.alpha * .1
@@ -511,4 +511,7 @@ $ ->
         add_edges()
 
 
+  root.step = (cur_step) ->
+    if cur_step == 'start'
+      force.start()
 

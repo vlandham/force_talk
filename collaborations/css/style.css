@@ -214,7 +214,7 @@ td { vertical-align: top; }
 #container {
   position: relative;
   width: 940px;
-  padding: 5px 0 10px 0;
+  /* padding: 5px 0 10px 0; */
   margin: auto;
 }
 

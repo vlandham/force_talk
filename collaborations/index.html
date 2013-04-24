@@ -14,6 +14,10 @@
 
   <meta name="viewport" content="width=device-width,initial-scale=1">
 
+  <script type="text/javascript">
+    var substeps = ['start'];
+  </script>
+
   <!-- CSS: implied media=all -->
   <link rel="stylesheet" href="css/style.css">
   <!-- end CSS-->
@@ -111,10 +115,12 @@
 
   <script src="full_js/jquery.simplemodal.js"></script>
   <script src="full_js/libs/d3.v2.min.js"></script>
+  <script src="../js/slide.js"></script>
   <script src="full_js/plugins.js"></script>
   <script src="full_js/script.js"></script>
-  <script src="full_js/collaboration_map.js"></script>
-
+  <script src="full_js/coffee-script.js"></script>
+  <script type="text/coffeescript" src="coffee/collaboration_map.coffee"></script>
+  
   <script type="text/javascript">
     $(document).ready(function() {
         $('#filters a').click(function() {

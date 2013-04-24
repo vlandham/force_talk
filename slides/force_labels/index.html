@@ -3,13 +3,15 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Force based label placement</title>
-		<script type="text/javascript" src="http://mbostock.github.com/d3/d3.js?2.6.0"></script>
-		<script type="text/javascript" src="http://mbostock.github.com/d3/d3.layout.js?2.6.0"></script>
-		<script type="text/javascript" src="http://mbostock.github.com/d3/d3.geom.js?2.6.0"></script>
+  <script type="text/javascript">
+    var substeps = ['start'];
+  </script>
+		<script type="text/javascript" src="../../js/d3.v3.min.js"></script>
+		<script type="text/javascript" src="../../js/slide.js"></script>
 	</head>
 	<body>
 <script type="text/javascript" charset="utf-8">
-			var w = 960, h = 500;
+			var w = 960, h = 600;
 
 			var labelDistance = 0;
 
@@ -54,11 +56,17 @@
 			});
 
 
-			force.start();
+			// force.start();
 
 			var force2 = d3.layout.force().nodes(labelAnchors).links(labelAnchorLinks).gravity(0).linkDistance(0).linkStrength(8).charge(-100).size([w, h]);
-			force2.start();
+			// force2.start();
 
+function step(cur_step) {
+  if(cur_step == 'start') {
+    force.start();
+    force2.start();
+  }
+};
 			var link = vis.selectAll("line.link").data(links).enter().append("svg:line").attr("class", "link").style("stroke", "#CCC");
 
 			var node = vis.selectAll("g.node").data(force.nodes()).enter().append("svg:g").attr("class", "node");

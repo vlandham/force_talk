@@ -3,19 +3,28 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Forces and grids</title>
+  <script type="text/javascript">
+    var substeps = ['start'];
+  </script>
 		<script type="text/javascript" src="d3.min.js"></script>
 		<script type="text/javascript" src="d3.layout.min.js"></script>
 		<script type="text/javascript" src="d3.geom.min.js"></script>
+		<script type="text/javascript" src="../js/slide.js"></script>
 		<script type="text/javascript" src="underscore-min.js"></script>
-		<script src="jquery-1.7.2.min.js" charset="utf-8">
-			
-		</script>
+		<script src="jquery-1.7.2.min.js" charset="utf-8"></script>
 		<style type="text/css" media="screen">
 			.menu{
 				position:absolute;
 				top :20px;
 				right:20px;
-			}
+      }
+
+      .hide {
+        fill-opacity:0;
+      }
+      .show {
+        fill-opacity:1;
+      }
 		</style>	
 	</head>
 	<body>
@@ -28,12 +37,23 @@
 			var nodes = [];
 			var links = [];
 
-			var USE_GRID = true;
+      var USE_GRID = true;
+
+      var fakers;
+
+      var force;
+
+      var SHOW_FAKES = false;
 			
 			var GRID_SIZE = 60;
 			
 			var GRID_TYPE = "HEXA";
 			
+function step(cur_step) {
+  if(cur_step == 'start') {
+    force.start();
+  }
+};
 			// set up event handlers
 			$(document).ready(function(){
 				$("#USE_GRID").click(
@@ -43,6 +63,16 @@
 						force.start();
 					}
 				);
+				$("#SHOW_FAKES").click(
+					function(){
+						SHOW_FAKES = $(this).is(":checked");
+            $(this).blur();
+
+            fakers
+              .attr("class", function(d) { return SHOW_FAKES ? 'show' : 'hide';});
+
+              }
+              );
 				
 				
 				//$("#CELL_SIZE").rangeinput();
@@ -83,18 +113,30 @@
 				}
 			};
 
-			var force = d3.layout.force().size([w, h]).nodes(nodes).links(links).gravity(1).linkDistance(function(d){return (1-d.weight)*100}).charge(-3000).linkStrength(function(x) {
-				return x.weight * 5
-			});
+force = d3.layout.force()
+  .size([w, h])
+  .nodes(nodes).links(links)
+  .gravity(1)
+  // .gravity(0)
+  .linkDistance(function(d){return (1-d.weight)*100;})
+  .charge(-3000)
+  // .charge(0)
+  .linkStrength(function(x) {	return x.weight * 5;});
 
 
-			force.start();
+			// force.start();
 
 			var link = vis.selectAll("line.link").data(links).enter().append("svg:line").attr("class", "link").style("stroke-width", 1.5).style("stroke", "#555").style("opacity", function(d){return d.weight*.7});
 
 			var node = vis.selectAll("g.node").data(force.nodes()).enter().append("svg:g").attr("class", "node");
 			node.append("svg:circle").attr("r", 6).style("fill", "#555").style("stroke", "#FFF").style("stroke-width", "4px");
-			node.call(force.drag);
+      node.call(force.drag);
+
+      fakers = vis.selectAll('.fake').data(force.nodes()).enter()
+        .append('svg:circle')
+        .attr('r', 6)
+        .attr('fill', 'orange')
+        .attr("class", function(d) { return SHOW_FAKES ? 'show' : 'hide';});
 
 			var updateLink = function() {
 				this.attr("x1", function(d) {
@@ -133,7 +175,13 @@
 
 				});
 
-			};
+      };
+
+var updateFakes = function() {
+  this.attr("transform", function(d) {
+      return "translate(" + d.x + "," + d.y + ")";
+      });
+};
 
 			var grid = function(width, height) {
 				return {
@@ -207,13 +255,15 @@
 				}
 
 				node.call(updateNode);
-				link.call(updateLink);
+        link.call(updateLink);
+        fakers.call(updateFakes);
 			});
 
 		</script>
 		<div class="menu">
 			<div>
 				<input type="checkbox" id="USE_GRID" checked>use grid</input>		
+				<input type="checkbox" id="SHOW_FAKES" >show nodes</input>		
 			</div>
 			<div>
 				<input type="range" min="30" step="10" max="150" id="CELL_SIZE" value="60"></input>

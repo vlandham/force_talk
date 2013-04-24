@@ -105,7 +105,7 @@ Network = () ->
   # variables we want to access
   # in multiple places of Network
   width = 960
-  height = 800
+  height = 630
   started = false
   # allData will store the unfiltered data
   allData = []
@@ -348,7 +348,7 @@ Network = () ->
 
   updateCenters = (artists) ->
     if layout == "radial"
-      groupCenters = RadialPlacement().center({"x":width/2, "y":height / 2 - 100})
+      groupCenters = RadialPlacement().center({"x":width/2, "y":height / 2 - 40})
         .radius(300).increment(18).keys(artists)
 
   # Removes links from allLinks whose
