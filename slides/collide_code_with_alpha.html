@@ -9,7 +9,7 @@
     <script type="text/javascript" src="../js/jquery.highlight.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
     <script type="text/javascript">
-      var substeps = [];
+      var substeps = ['highlight_charge', 'highlight'];
 
       function step(cur_step) {
         if(cur_step == 'highlight_charge') {
@@ -26,20 +26,33 @@
     <script type="text/javascript" src="../js/slide.js"></script>
   </head>
   <body>
-    <h2>Collide</h2>
+    <h2></h2>
     <pre>
-      <code class="javascript" style="font-size: 82%;">
+      <code class="javascript" style="font-size: 75%;">
+
 function collide(alpha) {
   return function(node1) {
-    //for each 'node2', in nodes
-    //  if node1 != node2
-    //    figure out distance between two nodes
+    nodes.forEach(function(node2) {
+      if(node1 != node2) {
+        var x = node1.x - node2.x;
+        var y = node1.y - node2.y;
+        var distance = Math.sqrt(x * x + y * y);
 
-    //    if nodes are too close
-    //      move node1 back half
-    //      move node2 back half
+        var minDistance = node1.size + node2.size + 3;
+
+        if(distance < minDistance) {
+          var newDistance = 
+             ((distance - minDistance) / distance) * alpha;
+          node1.x = node1.x - (x * newDistance);
+          node1.y = node1.y - (y * newDistance);
+          node2.x = node2.x + (x * newDistance);
+          node2.y = node2.y + (y * newDistance);
+        }
+      }
+    });
   };
 }
+      
       </code>
     </pre>
   </body>

@@ -50,9 +50,9 @@ var force = d3.layout.force()
   .on("tick", tick)
   .charge(-40);
 
-nodes.push({size:30}, {size:30}, {size:30});
+nodes.push({size:100}, {size:30}, {size:30});
 nodes.push({size:10}, {size:10}, {size:10});
-nodes.push({size:100}, {size:30}, {size:10});
+nodes.push({size:30}, {size:30}, {size:10});
 
   /* .charge(function(d) { return d._children ? -d.size / 100 : -30; }) */
   /* .linkDistance(function(d) { return d.target._children ? 80 : 30; }) */

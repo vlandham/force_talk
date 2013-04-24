@@ -11,15 +11,13 @@
     <script type="text/javascript" src="../js/slide.js"></script>
   </head>
   <body>
-    <h2>Force Code</h2>
+    <h2></h2>
     <pre>
-      <code class="javascript">
+      <code class="javascript small">
 function tick(e) {
-
-  var alpha = e.alpha;
   node
-    .each(move_to_category_center(alpha))
-    .each(buoyancy(alpha));
+    .each(moveTowardCategoryCenter(e.alpha))
+    .each(buoyancy(e.alpha));
 
   node.attr("cx", function(d) { return d.x; })
       .attr("cy", function(d) { return d.y; });
@@ -30,8 +28,9 @@ function buoyancy(alpha) {
     var targetY = tierFor(d);
     d.y = d.y + (targetY - d.y) * alpha * alpha;
   };
+}
 
-function move_to_category_center(alpha) {
+function moveTowardCategoryCenter(alpha) {
   return function(d) {
     // ...
   };

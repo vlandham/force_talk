@@ -7,10 +7,10 @@ a, a:visited {
 }
 
 #container {
-  padding-top:20px;
+  /* padding-top:20px; */
   width: 980px;
-  border-left: 2px #ddd solid;
-  border-right: 2px #ddd solid;
+  /* border-left: 2px #ddd solid; */
+  /* border-right: 2px #ddd solid; */
 }
 
 header {
@@ -39,7 +39,7 @@ header {
 }
 
 #controls {
-  padding: 20px;
+  padding: 5px;
   background-color: #eee;
   margin: 10px;
   width: 350px;

@@ -20,6 +20,10 @@ line.link {
 }
 
     </style>
+
+    <script type="text/javascript">
+      var substeps = ['start'];
+    </script>
   </head>
   <body>
     <h1>Using and Abusing the Force</h1>
@@ -139,7 +143,13 @@ function load(error, data) {
 
 }
 
-d3.json("../resources/face_nodes/face.json", load);
+
+function step(cur_step) {
+  if(cur_step == 'start') {
+    d3.json("../resources/face_nodes/face.json", load);
+  }
+};
+
 
 
     </script>

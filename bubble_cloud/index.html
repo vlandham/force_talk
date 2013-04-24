@@ -33,16 +33,15 @@
       </select>
     <header>
     <h1>Bubble Cloud</h1>
-    <h2>The most frequently used words in:</h2>
       <h2 id="book-title"></h2>
     </header>
     <div id="main" role="main">
       <div id="vis"></div>
       <div id="status"></div>
       <div id="controls">
-        <h3>Jitter</h3>
+        <h3>Alpha</h3>
         <form id="jitter" oninput="output.value = (jitter_input.value / 200).toFixed(3)" >
-          <input id="jitter_input" type="range" min="0" max="400" value="100" style="width:240px;">
+          <input id="jitter_input" type="range" min="0" max="400" value="100" style="width:240px;height:20px;">
           <output name="output" for="input">0.5</output>
         </form>
       </div>
