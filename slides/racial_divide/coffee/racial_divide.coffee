@@ -47,7 +47,7 @@ edge = (a, b) ->
 class CityView
   constructor: (@name, @x, @y, @scale) ->
     @width = 1000
-    @height = 650
+    @height = 620
     @csv_data = {}
     @color = null
     @all_node = []
@@ -97,7 +97,7 @@ class CityView
       zoom_node = @all_node.filter (d) ->
         d.tract_data['GEOID'] == id
 
-      zoom_node.attr('fill', 'red')
+      # zoom_node.attr('fill', 'red')
       my_path = @path
       zoom_node.each (d) ->
         x = d.x
