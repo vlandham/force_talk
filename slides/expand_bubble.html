@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <link type="text/css" rel="stylesheet" href="../css/style.css"/>
+    <link type="text/css"  rel="stylesheet" href="../js/highlight.js/styles/tomorrow-night-bright.css">
+    <script type="text/javascript" src="../js/highlight.js/highlight.pack.js"></script>
+    <style type="text/css">
+
+circle.node {
+  cursor: pointer;
+  /* stroke: #000; */
+  stroke: #fff;
+  stroke-width: .5px;
+}
+
+line.link {
+  fill: none;
+  /* stroke: #9ecae1; */
+  stroke: #9ecae1;
+  stroke-width: 1.5px;
+}
+
+body {
+  background-color: #09217B;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2> </h2>
+    <script type="text/javascript">
+      var substeps = ['start'];
+    </script>
+    <script type="text/javascript" src="../js/dat.gui.js"></script>
+    <script type="text/javascript" src="../js/d3.v3.js"></script>
+    <script type="text/javascript" src="../js/slide.js"></script>
+    <script type="text/javascript">
+
+var w = 1024,
+    h = 740,
+    nodes = [],
+    links = [],
+    node, 
+    link;
+
+function charge(d) {
+  return -Math.pow(d.size, 2.0) / 7;
+}
+
+changeCharge = function(number) {
+		force.charge(function(d, i) { 
+			return i ? -3 : -number; 
+		});
+		force.resume();
+	}
+var force = d3.layout.force()
+  .nodes(nodes)
+  /* .size([w, h]) */
+  .size([0,0])
+  .gravity(0.05)
+  .charge(function(d, i) { 
+      return i ? -6 : -80; 
+      })
+  .on("tick", tick)
+
+var r = 8;
+var fixed = true;
+
+var num = 0;
+
+		var n = {
+			fill : "#fff",
+			x : 0,
+			xfixed : 0,
+			y : 0,
+			yfixed : 0,
+			radius : r,
+			fixed : 1
+		}
+		nodes.push(n);
+var makeCircle = function(x, y) {
+			var n = {
+				fill : "#fff",
+				x : x,
+				xfixed :x,
+				y : y,
+				yfixed : y,
+        radius : r,
+        num: num
+
+      }
+      num += 1;
+			nodes.push(n);
+		}
+
+		var makeRow = function(size, y) {
+			count = Math.floor(size/2);
+			for(var i = 0; i<=count; i++) {
+				if(size%2>=1) {
+					if(i==0) {
+						makeCircle(0+1,y);	
+					} else {
+						makeCircle(i*dx, y);
+						makeCircle(-i*dx, y);	
+					}
+				} else {
+					if(i!=0) {
+						makeCircle(i*dx - dx/2, y);
+						makeCircle(-i*dx + dx/2, y);	
+					}
+				}
+			}
+		}
+
+		var size = 23;
+		var dx = r*2.2;
+    var dy = r*2;
+    var r0 = 8;
+
+		for(var j = 0; j <= Math.floor(size/2); j++) {
+			if(j == 0) {
+				makeRow(size, 0);
+			} else {
+				makeRow(size-j, j*dy);
+				makeRow(size-j, -j*dy);
+			}
+		}
+  /* .charge(function(d) { return d._children ? -d.size / 100 : -30; }) */
+  /* .linkDistance(function(d) { return d.target._children ? 80 : 30; }) */
+
+var vis = d3.select("body").append("svg")
+    .attr("width", w)
+    .attr("height", h);
+
+var translate = {
+			x : w/2,
+			y : h/2
+		}
+
+g0 = vis.append("g")
+			.attr("transform", "translate("+translate.x+", "+translate.y+")");
+
+      g = vis.append("g")
+			.attr("transform", "translate("+translate.x+", "+translate.y+")");
+
+		c = g.append("circle")
+			.attr("r", r0)
+      .attr("fill", "#FFD05B");
+      /* .attr("fill", "#FF8C2E"); */
+
+
+function update() {
+
+  // Update the nodes…
+  node = g0.selectAll("circle.node")
+      .data(nodes)
+      .attr("r", function(d) { return d.size; });
+
+  // Enter any new nodes.
+  node.enter().append("circle")
+      .attr("class", "node")
+      .attr("cx", function(d) { return d.x; })
+      .attr("cy", function(d) { return d.y; })
+      .attr("r", function(d) { return d.radius; })
+      .style("fill", function(d) {return d.fill; })
+      .on("click", function(d) { console.log(d);});
+      /* .style("fill", "steelblue"); */
+      /* .call(force.drag); */
+
+  // Exit any old nodes.
+  node.exit().remove();
+
+  link = vis.selectAll("line.link")
+      .data(links, function(d) { return d.target.id; });
+
+  // Enter any new links.
+  link.enter().insert("line", ".node")
+      .attr("class", "link")
+      .attr("x1", function(d) { return d.source.x; })
+      .attr("y1", function(d) { return d.source.y; })
+      .attr("x2", function(d) { return d.target.x; })
+      .attr("y2", function(d) { return d.target.y; });
+
+  // Restart the force layout.
+  force
+    .start();
+}
+
+function collide(node) {
+	  var r = node.radius + 16,
+	      nx1 = node.x - r,
+	      nx2 = node.x + r,
+	      ny1 = node.y - r,
+	      ny2 = node.y + r;
+	  return function(quad, x1, y1, x2, y2) {
+	    if (quad.point && (quad.point !== node)) {
+	      var x = node.x - quad.point.x,
+	          y = node.y - quad.point.y,
+	          l = Math.sqrt(x * x + y * y),
+	          r = node.radius + quad.point.radius;
+	      if (l < r) {
+	        l = (l - r) / l * .5;
+	        node.x -= x *= l;
+	        node.y -= y *= l;
+	        quad.point.x += x;
+	        quad.point.y += y;
+	      }
+	    }
+	    return x1 > nx2
+	        || x2 < nx1
+	        || y1 > ny2
+	        || y2 < ny1;
+	  };
+	}
+function tick(e) {
+var q = d3.geom.quadtree(nodes),
+			i = 0,
+			n = nodes.length;
+
+			while (++i < n) {
+				q.visit(collide(nodes[i]));
+			}
+  
+      node
+        .attr("cx", function(d) {
+					if(d.fixed) {
+						d.x = d.xfixed;
+						return d.xfixed; 	
+					} else {
+						return d.x; 
+					}
+				})
+      .attr("r", function(d) { return d.radius; })
+        .attr("cy", function(d) { 
+					if(d.fixed) {
+						d.y = d.yfixed;
+						return d.yfixed; 	
+					} else {
+						return d.y; 
+					}
+				});
+
+  link.attr("x1", function(d) { return d.source.x; })
+    .attr("y1", function(d) { return d.source.y; })
+    .attr("x2", function(d) { return d.target.x; })
+    .attr("y2", function(d) { return d.target.y; });
+};
+
+function step(cur_step) {
+  if(cur_step == 'start') {
+    update();
+  } else if(cur_step == 'more') {
+    var xTcount = 43;
+    for(var i = 0; i < xTcount; i++) {
+      nodes.push({size: i * 10 % 60});
+    }
+    update();
+  }
+};
+
+// window.onload = function() {
+var gui = new dat.GUI();
+var config = {'charge':8};
+// var charger = gui.add(config, "charge", -300, 0);
+// charger.onChange(function(value) {
+//     force.charge(value);
+//     force.start();
+//     });
+
+var graver = gui.add(config, 'charge', 0, 200);
+graver.onChange(function(value) {
+    c.attr("r", value);
+    force.charge(function(d, i) { 
+      return i ? -4 : -Math.pow(value-8, 0.8)*40; 
+      }).start();
+    });
+
+// };
+
+    </script>
+  </body>
+</html>
