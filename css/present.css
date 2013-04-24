@@ -1,8 +1,8 @@
 body {
   background: #fff;
   position: relative;
-  width: 1280px;
-  height: 800px;
+  width: 1024px;
+  height: 768px;
   margin: auto;
   overflow: hidden;
 }
@@ -10,8 +10,8 @@ body {
 iframe {
   border: none;
   position: absolute;
-  width: 1280px;
-  height: 800px;
+  width: 1024px;
+  height: 768px;
   background: #fff;
   -moz-transition-property: -moz-transform, opacity;
   -moz-transition-duration: 500ms;

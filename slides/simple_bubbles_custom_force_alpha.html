@@ -31,8 +31,8 @@ line.link {
     <script type="text/javascript" src="../js/slide.js"></script>
     <script type="text/javascript">
 
-var w = 1280,
-    h = 800,
+var w = 1024,
+    h = 740,
     nodes = [],
     links = [],
     node, 
@@ -42,7 +42,7 @@ function charge(d) {
   return -Math.pow(d.size, 2.0) / 7;
 }
 
-var centers = {left: {x:300, y:400}, right: {x:900, y:400}};
+var centers = {left: {x:300, y:400}, right: {x:700, y:400}};
 
 var centering = false;
 
@@ -54,8 +54,8 @@ var centering = false;
   .on("tick", tick)
   .charge(charge);
 
-nodes.push({size:30, category:'left'}, {size:30, category:'left'}, {size:30, category: 'left'});
-nodes.push({size:10, category:'right'}, {size:10, category: 'right'}, {size:10, category: 'right'});
+nodes.push({size:30, category:'right'}, {size:30, category:'left'}, {size:30, category: 'left'});
+nodes.push({size:10, category:'right'}, {size:10, category: 'right'}, {size:10, category: 'left'});
 nodes.push({size:100, category: 'right'}, {size:30, category: 'left'}, {size:10, category: 'left'});
 
   /* .charge(function(d) { return d._children ? -d.size / 100 : -30; }) */

@@ -13,17 +13,17 @@
   <body>
     <h2></h2>
     <pre>
-      <code class="javascript">
+      <code class="javascript medium">
 // called for every force 'tick'
 function tick() {
 
-  node.each(mess_with_node_position(params));
+  node.each(messWithNodePosition(params));
 
   node.attr("cx", function(d) { return d.x; })
       .attr("cy", function(d) { return d.y; });
 }
 
-function mess_with_node_position(params) {
+function messWithNodePosition(params) {
   return function(d) {
     d.x += // modify x pos
     d.y += // modify y pos

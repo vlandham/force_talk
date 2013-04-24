@@ -1,10 +1,10 @@
 body {
   font: 300 36px "Helvetica Neue";
   height: 640px;
-  margin: 80px 160px 80px 160px;
+  margin: 60px 120px 60px 120px;
   overflow: hidden;
   position: relative;
-  width: 960px;
+  width: 860px;
 }
 
 a:link, a:visited {
@@ -19,6 +19,7 @@ a:hover {
 blockquote {
   margin: 0;
   margin-top: 20%;
+  width: 75%;
   /* margin-top: 10px; */
   margin-bottom: 10px;
   margin-left: 50px;
@@ -109,7 +110,7 @@ h3 {
 
 body > svg {
   position: absolute;
-  top: -80px;
+  top: -60px;
   left: -160px;
 }
 
@@ -132,4 +133,12 @@ body > svg {
 
 #code {
   display: none;
+}
+
+code.medium {
+  font-size: 80%;
+}
+
+code.small {
+  font-size: 70%;
 }

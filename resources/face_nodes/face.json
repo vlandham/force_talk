@@ -2,7 +2,7 @@
 		{"name":"eye_right", "size":141, "x":0},
 		{"name":"eye_left","size":134, "x":1000},
 		{"name":"nose", "size":152},
-		{"name":"mouth", "size":220, "fixed":true, "x":440,"y":650}
+		{"name":"mouth", "size":220, "fixed":true, "x":440,"y":630}
  ],
  "links":[
  	{"source":1,"target":0,"length":2},

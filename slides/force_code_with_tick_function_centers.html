@@ -13,24 +13,23 @@
   <body>
     <h2></h2>
     <pre>
-      <code class="javascript">
-var category_centers = {
+      <code class="javascript small">
+var categoryCenters = {
   left: {x: 300, y: 400},
   right: {x: 900, y: 400}
 };
 
 // called for every force 'tick'
 function tick() {
-
-  node.each(move_toward_category_center());
+  node.each(moveTowardCategoryCenter());
 
   node.attr("cx", function(d) { return d.x; })
       .attr("cy", function(d) { return d.y; });
 }
 
-function move_toward_category_center() {
+function moveTowardCategoryCenter() {
   return function(d) {
-    var center = category_centers[d.category];
+    var center = categoryCenters[d.category];
 
     d.x = d.x + (center.x - d.x) * 0.1;
     d.y = d.y + (center.y - d.y) * 0.1;
