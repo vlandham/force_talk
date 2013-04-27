@@ -273,7 +273,16 @@ graver.onChange(function(value) {
     c.attr("r", value);
     force.charge(function(d, i) { 
       return i ? -4 : -Math.pow(value-8, 0.8)*40; 
+       // return i ? -4 : value * -30; 
       }).start();
+
+
+// force.charge(function(d, i) { 
+//   if(d.fixed) {
+//     return -Math.pow(value, 0.8) * 40;
+//   } else {
+//     return -4;
+//     }}).start();
     });
 
 // };

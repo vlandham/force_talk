@@ -3,9 +3,6 @@ h2. TODO
 
 * pseudocode for quadtree
 * explain/understand quadtree. read code
-* more abuse the force images
-* add funny pics to slides
-* implement growing bubble
 * implement multiple force on bubble chart
 * code for bubbles as images
 * add clustered forces
