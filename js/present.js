@@ -17,7 +17,8 @@
         case 39: // right arrow
         case 32: // space
         case 34: { // page down
-          step(+1);
+          sendSubstep();
+          // step(+1);
           break;
         }
         case 8: { // delete
@@ -27,6 +28,10 @@
         case 37: // left arrow
         case 33: { // page up
           step(-1);
+          break;
+        }
+        case 78: { // n
+          step(+1);
           break;
         }
         case 36: { // home
