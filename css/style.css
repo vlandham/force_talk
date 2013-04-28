@@ -101,7 +101,8 @@ h3 {
 }
 
 .number {
-  color: #369;
+  /* color: #369; */
+  color: #fff;
 }
 
 .class, .special {
@@ -141,4 +142,9 @@ code.medium {
 
 code.small {
   font-size: 70%;
+}
+
+
+.close-button {
+  display: none;
 }
