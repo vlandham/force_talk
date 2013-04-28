@@ -11,14 +11,18 @@
     <script type="text/javascript" src="../js/slide.js"></script>
   </head>
   <body>
-    <h2>Force With Edges</h2>
+    <h2>Force States</h2>
     <pre>
-      <code class="javascript medium">
-// in 'tick' function
-link.attr("x1", function(d) { return d.source.x; })
-  .attr("y1", function(d) { return d.source.y; })
-  .attr("x2", function(d) { return d.target.x; })
-  .attr("y2", function(d) { return d.target.y; });
+      <code class="javascript" style="font-size:75%;">
+
+var projection =  d3.geo.albersUsa();
+var path = d3.geo.path()
+  .projection(projection);
+
+node = vis.selectAll("path")
+  .data(nodes)
+  .enter().append("path")
+  .attr("d", function(d) { return path(d.feature); });
       </code>
     </pre>
   </body>

@@ -11,14 +11,17 @@
     <script type="text/javascript" src="../js/slide.js"></script>
   </head>
   <body>
-    <h2>Force With Edges</h2>
+    <h2>Visual Representation for Nodes</h2>
     <pre>
-      <code class="javascript medium">
-// in 'tick' function
-link.attr("x1", function(d) { return d.source.x; })
-  .attr("y1", function(d) { return d.source.y; })
-  .attr("x2", function(d) { return d.target.x; })
-  .attr("y2", function(d) { return d.target.y; });
+      <code class="javascript">
+  node = vis.selectAll("image")
+    .data(nodes)
+    .enter().append("image")
+    .attr("xlink:href", function(d) { return "./head-" + d.id +".png"; })
+    .attr("x", -100)
+    .attr("y", -100)
+    .attr("width", 100)
+    .attr("height", 100);
       </code>
     </pre>
   </body>

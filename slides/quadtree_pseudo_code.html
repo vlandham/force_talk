@@ -9,11 +9,13 @@
     <script type="text/javascript" src="../js/jquery.highlight.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
     <script type="text/javascript">
-      var substeps = ['highlight'];
+      var substeps = [];
 
       function step(cur_step) {
-        if(cur_step == 'highlight') {
-          $('code').highlight('force')
+        if(cur_step == 'highlight_charge') {
+          $('code').highlight('charge')
+        } else if(cur_step == 'highlight') {
+          $('code').highlight('d.amount')
 
         } else if(cur_step == 'more') {
         }
@@ -24,10 +26,14 @@
     <script type="text/javascript" src="../js/slide.js"></script>
   </head>
   <body>
-    <h2>Cluster Force Code</h2>
+    <h2>Quadtree Pseudocode</h2>
     <pre>
-      <code class="javascript">
-// cluster force code
+      <code class="javascript" style="font-size: 82%;">
+function collide(alpha) {
+  return function(node1) {
+    // quadtree pseudo code
+  };
+}
       </code>
     </pre>
   </body>
