@@ -31,7 +31,11 @@
       <code class="javascript" style="font-size: 82%;">
 function collide(alpha) {
   return function(node1) {
+    var quadtree = d3.geom.quadtree(nodes);
     // quadtree pseudo code
+    quadtree.visit(function(quad, x1, y1, x2, y2) {
+    // quadtree pseudo code
+    });
   };
 }
       </code>

@@ -1,0 +1,37 @@
+
+Start with a discussion about being a fan of 'everything is a remix'. Reference Kirby Ferguson movies. How creative works are almost always incremental modifications on previous pieces. This is true for music, movies, art, and I think visualizations as well. So this talk should provide some 'remixable' concepts and code pieces that you might be able to use in your own work.
+
+Plus Amanda Cox says its ok, so its ok.
+
+In the first section, we look at what it takes to build a force layout network in D3, starting with just nodes and no links. We see how nodes are an array of data points. How D3 layouts don't specify a particular visual representation, so we are free to visualize the nodes any way we want. Node charge and the force layout gravity are explained and demonstrated. 
+
+With just this little bit of knowledge, we can already start abusing the force.
+
+Next we talk about how to use the force layout to build a bubble chart, as used by the NY Times. We use data in our nodes to specify the radius of our bubbles. We rely on the ability of the force layout to take a function for the node charge attribute to make the charge force for each node data-based. Now we have a bubble chart.
+
+Next, we want our bubble chart to move. This also comes from the NY Times example. This functionality is achieved by using 'custom forces' that are applied to each node during the 'tick' function of our force layout. To make this work, we need our custom force to be 'blended' in with the other forces/constraints that are working on each node. Typically, we don't want our force to dominate. This is where the 'alpha' parameter comes in. It can be thought of as a form of simulated annealing - slowly converging to a stable 'solution'. We use it by multiplying our forces movements by it.
+
+The last bit of magic from the NYT bubble chart is that each color of node stays in its own 'band'. If we have one custom force, we can have multiple. Each can push around our nodes in a different way. 
+
+So, bubbles are cool - but some times you don't want the bubbles to be able to mush and float around so much. You want more rigidity in your bubbles. We can expand the idea of a custom force to use it for collision detection and avoidance. We see how this functions in code, and see implementations in NY Times bubble cloud and my bubble cloud example.
+
+The concept of alpha comes up here too. We can use it to determine how much to move back our nodes when they collide. 0.5 gives even blend. Higher numbers make bubbles rocket off one another. 
+
+The collision code is done in a brute force manner - each node is compared to every other node in the layout. This is fine for small numbers of nodes, but can slow down significantly when you have a lot of nodes. The Quadtree data structure can be used to speed up this collision code - and any other calculation that requires comparing nodes that are physically close to one another.
+
+So far all our examples of the force layout have been just bubbles. Circles. But, remember, D3 layouts don't restrict to a particular visual representation. So, we can use squares, images (faces), or even states. D3 force layout don't care. 
+
+Ok, we've got nodes. Let's add some links. Finally! Links, or edges, in a force layout constrain the nodes. They have a source and destination and can have other data associated with them too. 
+
+Link Distance and Link Strength affect how links work. And these attributes, like the 'charge' attribute, can be data-driven. In fact that is what I did with visualizing the racial divide. Here, each census tract is connected to neighbors via invisible links. The link length is now determined by the difference in ratios of white/black populations between tracts. The idea here is that empty space between sharply dividing neighborhoods could tell us something about how these communities are affected. 
+
+Another fun thing to do with links is remove them! This congressional voting visualization provides a good example. And the code behind it is easy - its the traditional selection lifecycle that is used everywhere in D3 code - update, enter, and exit.
+
+Ok, lets take the concept of the 'custom force' applied to each node and see how it can be used to create whole new layouts using the force layout mechanics. 
+
+First up, my circle-based layout examples. Talk about using sine/cosine for radial placement. Then look at the 'expanding center node' example - which kind of looks like a Kill Bill fight. 
+
+Finally, we end with two experiments created by Moritz Stefaner. Both deal with doubling up on force layout components. The first uses two positions for nodes. One for the visual and one to push the visual to the right location. The second uses two separate force layouts. One for nodes one for labels. 
+ 
+
+ that's it!
