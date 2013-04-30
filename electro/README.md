@@ -1,0 +1,3 @@
+This is a [d3](http://www.d3js.org) experimental visualization of the policital views of various candidates campaining for seats in the Icelandic parliament 2013-2017.  The renderation uses multiple foci techniques as illustrated by @mbostock in [Multi-Foci Force Layout](http://bl.ocks.org/mbostock/1021841).  The original data was collected by [dv.is](http://www.dv.is/kosningar2013/) and scraped by @pallih [(see here)](http://x13.gogn.in) and [(here)](https://github.com/pallih/dv-kosningar).
+
+Simply drag the issues from the sidebar onto the main screen.  Keep in mind that negative forces and collisions might prevent any circle to move to optimal position.

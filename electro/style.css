@@ -1,0 +1,33 @@
+html, body, div,svg {
+    height: 100%;
+    width : 100%;
+    margin: 0;
+    padding: 0;
+}
+circle {
+  fill:gray;
+  stroke:black;
+  cursor:pointer;
+}
+
+.question circle {
+  fill:white;
+}
+
+.label {
+  text-anchor:middle;
+  stroke:black;
+  font-family:verdana;
+  font-size:10px;
+  cursor:pointer;
+}
+
+.white {
+  stroke:white;
+  stroke-width:5px;
+}
+
+.sjálfstæðisflokkurinn circle { fill:blue;}
+.Framsóknarflokkurinn circle {fill:green;}
+.Samfylkingin circle {fill:red;}
+.Vinstri_græn circle {fill:orange;}

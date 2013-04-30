@@ -1,101 +1,7 @@
 
-h2. TODO
-
-* pseudocode for quadtree
-* explain/understand quadtree. read code
-* implement multiple force on bubble chart
-* code for bubbles as images
-* add clustered forces
-* code for grid layout
-* code for force labels
-* figure out ending
-* implement ending
-* add sources slides
-
-h2. Slide Ideas
-
-* Intro to D3 Force "api":https://github.com/mbostock/d3/wiki/Force-Layout
-** what makes a force directed layout - just bubbles
-** source code for basic force
-** multiple bubbles - "this demo":http://bl.ocks.org/1062383 has fun fly in
-** gravity
-** charge
-
-* Bubble Chart
-** gates bubble chart example?
-** bubble chart code
-** bubble chart example with overlap
-** custom charge per node
-** correct bubble chart
-** nyt example?
-** multiple custom forces
-
-* Custom Forces
-** node data - show what data nodes have
-** code for custom tick force
-** example - no alpha
-** simulated annealing
-** alpha
-** example - alpha
-** gates example
-** multiple forces working - nyt example
-** add version of gates that includes this tweak?
-
-* Collision Detection
-** nyt bubble cloud example
-** book bubble cloud example
-** basic collision code
-** add mouse like in: http://bl.ocks.org/GerHobbelt/3116713 
-** quadtrees
-** quadtree view
-** quadtree code
-** book example
-** word cloud quote
-
-* Custom Nodes
-** other symbols example: http://bl.ocks.org/mbostock/1062383
-** images example: http://bl.ocks.org/mbostock/950642
-** states force directed example: http://mbostock.github.com/d3/talk/20111018/force-states.html
-
-* Nodes & Edges
-** basic example
-** code for basic example
-** edge link
-** edge strength
-** data based edge strength
-** racial divide map
-** edge custom styles?
-** curved edges?: http://bl.ocks.org/mbostock/4600693
-** adding and removing edges
-** senate social network: http://news.yahoo.com/senate-social-network-diagram-mcconnell-mean-girls-000513361.html
-** game of thrones places: http://www.jeromecukier.net/projects/agot/places.html
-** add/remove edges code
-
-* Custom Layouts
-** use of custom force
-** moving between layouts
-** flowing data example
-** stowers collaboration example
-** circle layout code
-** spiral layout code?
-** sunflower layout?
-
-* More Custom Layouts
-** clustered forces layout: http://bl.ocks.org/mbostock/1747543
-** grid layout: http://moritzstefaner.github.com/gridexperiments/
-** force directed labels?
-** my other stowers attempts?
-
-* Big Finish?!?
-** Could be grid layout with NYC metro locations
-** could be Nature of Code basic example... 
-
-** hull on top of particle emitter ... synced to music?
-** planaira moving about?
-
 h2. Network Ideas
 
-h3. big finish
+h3. ends and outs oddities
 
 d3 flock: 
 https://github.com/shuw/flock/blob/master/assets/js/example.coffee
@@ -106,7 +12,7 @@ http://bl.ocks.org/jasondavies/1554783
 convex hull
 http://bl.ocks.org/mbostock/4341699
 
-h3. humor
+h3. personal humor
 
 tmcw midwest tweet:
 https://twitter.com/tmcw/status/292762206855106560
