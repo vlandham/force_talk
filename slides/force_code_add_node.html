@@ -5,10 +5,25 @@
     <link type="text/css" rel="stylesheet" href="../css/style.css"/>
     <link type="text/css"  rel="stylesheet" href="../js/highlight.js/styles/tomorrow.css">
     <script type="text/javascript" src="../js/highlight.js/highlight.pack.js"></script>
+    <script type="text/javascript" src="../js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="../js/jquery.highlight.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
     
     <script type="text/javascript" src="../js/d3.v3.js"></script>
     <script type="text/javascript" src="../js/slide.js"></script>
+    <script type="text/javascript">
+      var substeps = ['highlight', 'r'];
+
+      function step(cur_step) {
+        if(cur_step == 'highlight') {
+          $('code').highlight('circle')
+
+        } else if(cur_step == 'r') {
+          $('code').unhighlight('circle')
+          $('code').highlight('10')
+        }
+      };
+    </script>
   </head>
   <body>
     <h2>Visual Representation for Nodes</h2>

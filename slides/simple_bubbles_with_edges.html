@@ -82,7 +82,9 @@ function update() {
       .attr("cy", function(d) { return d.y; })
       .attr("r", function(d) { return d.size; })
       .style("fill",  function(d,i) {return (i == 0) ? "red" : "steelblue";})
+      .on('click', function(d) {console.log(d);})
       .call(force.drag);
+    
 
   // Exit any old nodes.
   node.exit().remove();
@@ -122,8 +124,8 @@ function step(cur_step) {
     for(var i = 0; i < xTcount; i++) {
       nodes.push({size:20});
     }
-    for(var i = 0; i < xTcount; i++) {
-      links.push({source:originalNodes - i, target:originalNodes + (i - 1)});
+    for(var i = 0; i <= xTcount; i++) {
+      links.push({source:originalNodes - i , target:originalNodes + (i - 1)});
     }
     update();
   }

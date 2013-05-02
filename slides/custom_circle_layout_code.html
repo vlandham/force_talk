@@ -9,13 +9,21 @@
     <script type="text/javascript" src="../js/jquery.highlight.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
     <script type="text/javascript">
-      var substeps = ['highlight'];
+      var substeps = ['highlight', 'cos', 'sin', 'rad'];
 
       function step(cur_step) {
         if(cur_step == 'highlight') {
-          $('code').highlight('force')
+          $('code').highlight('radialLocation')
 
-        } else if(cur_step == 'more') {
+        } else if(cur_step == 'cos') {
+          $('code').unhighlight('radialLocation')
+          $('code').highlight('.cos')
+        } else if(cur_step == 'sin') {
+          $('code').unhighlight('.cos')
+          $('code').highlight('.sin')
+        } else if(cur_step == 'rad') {
+          $('code').unhighlight('.sin')
+          $('code').highlight('* radius')
         }
       };
     </script>

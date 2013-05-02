@@ -9,15 +9,12 @@
     <script type="text/javascript" src="../js/jquery.highlight.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
     <script type="text/javascript">
-      var substeps = ['highlight_charge', 'highlight'];
+      var substeps = ['highlight'];
 
       function step(cur_step) {
-        if(cur_step == 'highlight_charge') {
-          $('code').highlight('charge')
-        } else if(cur_step == 'highlight') {
-          $('code').highlight('d.amount')
-
-        } else if(cur_step == 'more') {
+        if(cur_step == 'highlight') {
+          $('code').highlight('alpha')
+        }  else if(cur_step == 'more') {
         }
       };
     </script>
@@ -28,8 +25,7 @@
   <body>
     <h2></h2>
     <pre>
-      <code class="javascript" style="font-size: 75%;">
-
+      <code class="javascript" style="font-size: 70%;padding-top:-80px;">
 function collide(alpha) {
   return function(node1) {
     nodes.forEach(function(node2) {

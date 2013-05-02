@@ -5,19 +5,23 @@
     <link type="text/css" rel="stylesheet" href="../css/style.css"/>
     <link type="text/css"  rel="stylesheet" href="../js/highlight.js/styles/tomorrow.css">
     <script type="text/javascript" src="../js/highlight.js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
     <script type="text/javascript" src="../js/jquery-1.9.1.min.js"></script>
     <script type="text/javascript" src="../js/jquery.highlight.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
+
     <script type="text/javascript">
-      var substeps = ['highlight', 'more'];
+      var substeps = [];
 
       function step(cur_step) {
         if(cur_step == 'highlight') {
-          $('code').highlight('charge')
+          $('code').highlight('.x')
+          $('code').highlight('.y')
 
         } else if(cur_step == 'more') {
-          $('code').unhighlight('charge')
-          $('code').highlight('gravity')
+          $('code').unhighlight('.x')
+          $('code').unhighlight('.y')
+          $('code').highlight('cx')
+          $('code').highlight('cy')
         }
       };
     </script>
@@ -26,12 +30,14 @@
     <script type="text/javascript" src="../js/slide.js"></script>
   </head>
   <body>
-    <h2>Charge &amp; Gravity</h2>
+    <h2>Tick Function</h2>
     <pre>
-      <code class="javascript">
-      force 
-        .charge(-300)
-        .gravity(0.1);
+      <code class="javascript medium">
+// called for every force 'tick'
+function tick() {
+  node.attr("cx", function(d) { return d.x; })
+      .attr("cy", function(d) { return d.y; });
+}
       </code>
     </pre>
   </body>

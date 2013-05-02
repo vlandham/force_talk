@@ -36,7 +36,7 @@ var force = d3.layout.force()
   .charge(charge);
 
 function charge(d) {
-  return -Math.pow(d.amount, 2.0) / 4;
+  return d.amount * d.amount * -0.25;
 }
       
       </code>
