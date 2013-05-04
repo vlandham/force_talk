@@ -29,10 +29,9 @@
     <h2>Visual Representation for Nodes</h2>
     <pre>
       <code class="javascript">
-  node = vis.selectAll("circle.node")
+  node = vis.selectAll("circle")
     .data(nodes)
     .enter().append("circle")
-    .attr("class", "node")
     .style("fill", "steelblue");
     .attr("r", 10)
       </code>

@@ -27,10 +27,9 @@
     <h2>Set Radius</h2>
     <pre>
       <code class="javascript" style="font-size: 75%;">
-node = vis.selectAll("circle.node")
+node = vis.selectAll("circle")
   .data(nodes)
   .enter().append("circle")
-  .attr("class", "node")
   .style("fill", "steelblue");
   .attr("r", function(d) { return rScale(d.amount); });
       </code>
