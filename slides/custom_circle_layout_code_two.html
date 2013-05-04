@@ -13,7 +13,7 @@
 
       function step(cur_step) {
         if(cur_step == 'highlight') {
-          $('code').highlight('force')
+          $('code').highlight('radialLocation')
 
         } else if(cur_step == 'more') {
         }
@@ -27,7 +27,14 @@
     <h2>Radial Layout</h2>
     <pre>
       <code class="javascript medium">
-      // show how to call the circle code
+      var increment = 360 / groups.length;
+      var radius = 200;
+      var angle = 0;
+
+      groups.forEach(function(g) {
+        var pos = radialLocation(angle, radius);
+        angle += increment;
+      });
       </code>
     </pre>
   </body>

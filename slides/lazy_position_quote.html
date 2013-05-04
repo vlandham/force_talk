@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <link type="text/css" rel="stylesheet" href="../css/style.css"/>
+    <script type="text/javascript" src="../js/d3.v3.js"></script>
+    <script type="text/javascript" src="../js/slide.js"></script>
+    <script type="text/javascript" src="../js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="../js/jquery.highlight.js"></script>
+    <script type="text/javascript">
+      var substeps = [];
+
+      function step(cur_step) {
+        if(cur_step == 'change') {
+          $('blockquote').html('The force layout is a lazy way to do position encoding.');
+          $('blockquote').highlight('lazy');
+          $('.author').html('- Jim Vallandingham');
+
+
+        } else if(cur_step == 'highlight') {
+
+        } else if(cur_step == 'more') {
+        }
+      };
+    </script>
+  </head>
+  <body>
+    <blockquote>The force layout is an <span style="background-color:#FFFF88;">lazy</span> way to do position encoding.</blockquote>
+    <!-- <div class="author">- Mike Bostock</div> -->
+  </body>
+</html>

@@ -39,7 +39,7 @@ We end with a rapid fire look at a few more examples of using the parameters for
 * Electro by Ziggy Jonsson uses the custom force idea - but lets the user specify the locations of the node foci. Messy, but interesting
 * this idea is taken to a more production level with Disqus's new 'Gravity' screen - which groups topics of similar interest using the same mechanism, adding real-time updates. 
 * shape of my library by Sarah Groff-Palermo uses collision and custom forces to provide quantitative visuals about categorical data.
-* this idea is taken to the extreme with 'Visual Sedimentation' which tries to use the idea of particles in suspension to settle to visualize streaming data.
+* this idea is taken to the extreme with 'Visual Sedimentation' which tries to use the idea of geological process of sedimentation to visualize streaming data.
 
 So hopefully we now have a greater understanding of the magic behind the force. 
 
@@ -47,13 +47,25 @@ So get out there and abuse the force today!
 
 that's it!
 
+h2. NOTES
+
+Mike Bostock's notes on 'jitter': The collide function takes alpha, just like gravity. "Jitter" typically connotes added randomness.
+
+An alpha greater than 0.5 would overcompensate for collision, moving farther apart than is necessary to resolve constraint.
+
+Senate Vis Title: "What does the Senate have in common with single-celled organisms? This diagram."
+Remake of one in Beautiful Visualization
+
+Is Barack Obama President by The Guardian
+
+Shape of my Library by Sarah Groff-Palermo - UX Designer in San Francisco
+
+
+
+
 h2. TODO
 
 * implement multiple force on bubble chart
-* code for grid layout
-* code for force labels
-* figure out ending
-* implement ending
 
 h2. Slide Ideas
 
