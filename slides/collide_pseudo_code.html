@@ -9,15 +9,20 @@
     <script type="text/javascript" src="../js/jquery.highlight.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
     <script type="text/javascript">
-      var substeps = [];
+      var substeps = ['highlight','more', 'morer'];
 
       function step(cur_step) {
-        if(cur_step == 'highlight_charge') {
-          $('code').highlight('charge')
-        } else if(cur_step == 'highlight') {
-          $('code').highlight('d.amount')
-
+        if(cur_step == 'highlight') {
+          $('code').highlight('(node1)')
         } else if(cur_step == 'more') {
+          $('code').unhighlight('(node1)')
+          $('code').highlight('each')
+          $('code').highlight('\'node2\'')
+
+        } else if(cur_step == 'morer') {
+          $('code').unhighlight('each')
+          $('code').unhighlight('\'node2\'')
+          $('code').highlight('too close')
         }
       };
     </script>

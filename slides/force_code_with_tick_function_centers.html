@@ -26,8 +26,8 @@
           $('code').highlight('d.category')
         } else if (cur_step == 'move') {
           $('code').unhighlight('d.category')
-          $('code').highlight('d.x =')
-          $('code').highlight('d.y =')
+          $('code').highlight('d.x +=')
+          $('code').highlight('d.y +=')
         }
       };
     </script>
@@ -53,8 +53,8 @@ function moveTowardCategoryCenter() {
   return function(d) {
     var center = categoryCenters[d.category];
 
-    d.x = d.x + (center.x - d.x) * 0.1;
-    d.y = d.y + (center.y - d.y) * 0.1;
+    d.x += (center.x - d.x) * 0.1;
+    d.y += (center.y - d.y) * 0.1;
   };
 }
       </code>
