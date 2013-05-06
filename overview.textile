@@ -49,8 +49,16 @@ that's it!
 
 h2. NOTES
 
-Mike Bostock's notes on 'jitter': The collide function takes alpha, just like gravity. "Jitter" typically connotes added randomness.
 
+charge: A negative value results in node repulsion, while a positive value results in node attraction.
+
+gravity: A weak geometric constraint similar to a virtual spring connecting each node to the center of the layout's size. This approach has nice properties: near the center of the layout, the gravitational strength is almost zero, avoiding any local distortion of the layout
+
+linkDistance: length of the links
+
+linkStrength: rigidity of links
+
+Mike Bostock's notes on 'jitter': The collide function takes alpha, just like gravity. "Jitter" typically connotes added randomness.
 An alpha greater than 0.5 would overcompensate for collision, moving farther apart than is necessary to resolve constraint.
 
 Senate Vis Title: "What does the Senate have in common with single-celled organisms? This diagram."
