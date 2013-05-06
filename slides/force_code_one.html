@@ -9,13 +9,18 @@
     <script type="text/javascript" src="../js/jquery.highlight.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
     <script type="text/javascript">
-      var substeps = ['highlight'];
+      var substeps = ['highlight', 'more', 'start'];
 
       function step(cur_step) {
         if(cur_step == 'highlight') {
           $('code').highlight('force')
 
         } else if(cur_step == 'more') {
+          $('code').unhighlight('force')
+          $('code').highlight('(nodes)')
+        } else if(cur_step == 'start') {
+          $('code').unhighlight('(nodes)')
+          $('code').highlight('start()')
         }
       };
     </script>

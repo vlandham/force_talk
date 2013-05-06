@@ -12,14 +12,19 @@
     <script type="text/javascript" src="../js/d3.v3.js"></script>
     <script type="text/javascript" src="../js/slide.js"></script>
     <script type="text/javascript">
-      var substeps = ['highlight', 'r'];
+      var substeps = ['highlight', 'nodes', 'r'];
 
       function step(cur_step) {
         if(cur_step == 'highlight') {
           $('code').highlight('circle')
 
-        } else if(cur_step == 'r') {
+        } else if(cur_step == 'nodes') {
+
           $('code').unhighlight('circle')
+          $('code').highlight('nodes()')
+
+        } else if(cur_step == 'r') {
+          $('code').unhighlight('nodes()')
           $('code').highlight('10')
         }
       };
@@ -30,7 +35,7 @@
     <pre>
       <code class="javascript">
   node = vis.selectAll("circle")
-    .data(nodes)
+    .data(force.nodes())
     .enter().append("circle")
     .style("fill", "steelblue");
     .attr("r", 10)

@@ -24,7 +24,7 @@ line.link {
   <body>
     <h2> </h2>
     <script type="text/javascript">
-      var substeps = ['start','more'];
+      var substeps = ['start'];
     </script>
     <script type="text/javascript" src="../js/dat.gui.js"></script>
     <script type="text/javascript" src="../js/d3.v3.js"></script>
@@ -133,18 +133,19 @@ function step(cur_step) {
 
 // window.onload = function() {
 var gui = new dat.GUI();
-var config = {'linkDistance':80, 'linkStrength':1};
+// var config = {'linkDistance':80, 'linkStrength':1};
+var config = {'linkDistance':80};
 var charger = gui.add(config, "linkDistance", 0, 300);
 charger.onChange(function(value) {
     force.linkDistance(value);
     force.start();
     });
 
-var graver = gui.add(config, 'linkStrength', 0, 1);
-graver.onChange(function(value) {
-    force.linkStrength(value);
-    force.start();
-    });
+// var graver = gui.add(config, 'linkStrength', 0, 1);
+// graver.onChange(function(value) {
+//     force.linkStrength(value);
+//     force.start();
+//     });
 
 // };
 

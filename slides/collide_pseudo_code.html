@@ -9,7 +9,7 @@
     <script type="text/javascript" src="../js/jquery.highlight.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
     <script type="text/javascript">
-      var substeps = ['highlight','more', 'morer'];
+      var substeps = ['highlight','more', 'morer', 'move'];
 
       function step(cur_step) {
         if(cur_step == 'highlight') {
@@ -23,6 +23,8 @@
           $('code').unhighlight('each')
           $('code').unhighlight('\'node2\'')
           $('code').highlight('too close')
+        } else if(cur_step == 'move') {
+          $('code').highlight('move')
         }
       };
     </script>

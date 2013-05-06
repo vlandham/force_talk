@@ -12,13 +12,15 @@
     <script type="text/javascript" src="../js/d3.v3.js"></script>
     <script type="text/javascript" src="../js/slide.js"></script>
     <script type="text/javascript">
-      var substeps = ['highlight', 'more'];
+      var substeps = ['highlight', 'y', 'more'];
       function step(cur_step) {
         if(cur_step == 'highlight') {
           $('code').highlight('buoyancy');
 
+        } else if(cur_step == 'y') {
+          $('code').unhighlight('buoyancy');
+          $('code').highlight('d.y +=')
         } else if(cur_step == 'more') {
-          $('code').unhighlight('buoyancy')
           $('code').highlight('alpha * alpha')
         } 
       }
@@ -39,8 +41,8 @@ function tick(e) {
 
 function buoyancy(alpha) {
   return function(d) {
-    var targetY = tierFor(d);
-    d.y = d.y + (targetY - d.y) * alpha * alpha;
+    var targetY = layerFor(d);
+    d.y += (targetY - d.y) * alpha * alpha;
   };
 }
 
