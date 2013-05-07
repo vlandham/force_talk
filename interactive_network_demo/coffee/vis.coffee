@@ -507,6 +507,11 @@ $ ->
   root.step = (cur_step) ->
     if cur_step == 'start'
       myNetwork.start()
+    else if cur_step == 'radial'
+      newLayout = 'radial'
+      activate("layouts", newLayout)
+      myNetwork.toggleLayout(newLayout)
+      
 
   d3.selectAll("#layouts a").on "click", (d) ->
     newLayout = d3.select(this).attr("id")
