@@ -44,8 +44,8 @@ function moveTowardCategoryCenter(alpha) {
   return function(d) {
     var center = categoryCenters[d.category];
 
-    d.x = d.x + (center.x - d.x) * 0.1 * alpha;
-    d.y = d.y + (center.y - d.y) * 0.1 * alpha;
+    d.x += (center.x - d.x) * 0.1 * alpha;
+    d.y += (center.y - d.y) * 0.1 * alpha;
   };
 }
       </code>
