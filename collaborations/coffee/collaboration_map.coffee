@@ -112,7 +112,7 @@ $ ->
     .on("click", writeDownloadLink)
 
   w = 960
-  h = 900
+  h = 800
   r = 6
   stroke_opacity = 0.6
   stroke_width = 0.8
@@ -514,4 +514,15 @@ $ ->
   root.step = (cur_step) ->
     if cur_step == 'start'
       force.start()
+    else if cur_step == 'lab'
+      $('#filters a').removeClass("active")
+      typeId = 'lab_core'
+      $('#filters #' + typeId).addClass('active')
+      move_groups(typeId)
+    else if cur_step == 'spiral'
+      $('#filters a').removeClass("active")
+      typeId = 'spiral'
+      $('#filters #' + typeId).addClass('active')
+      move_groups(typeId)
+
 

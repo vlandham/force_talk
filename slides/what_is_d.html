@@ -16,7 +16,7 @@
     <script type="text/javascript" src="../js/d3.v3.js"></script>
     <script type="text/javascript" src="../js/slide.js"></script>
     <script type="text/javascript">
-      var substeps = ['one', 'two', 'three', 'four', 'code_one'];
+      var substeps = ['one', 'two', 'three'];
 
       function step(cur_step) {
         d3.select("#" + cur_step).style("display", "inherit")
@@ -32,8 +32,16 @@
     <h1>What is the D3.js?</h1>
     <br/><br/>
     <p id="one" style="display:none;">Data-Driven Documents</p>
-    <p id="two" style="display:none;">Bind data to DOM</p>
-    <p id="three" style="display:none;">Manipulate sets of elements - <i>Selections</i></p>
-    <code id="four" style="display:none;font-size: 70%;">d3.selectAll("p").style("background-color", "orange");</code>
+    <p id="two" style="display:none;">Bind data to <i>Selections</i></p>
+    <p id="three" style="display:none;">Use Selections to visualize data</p>
+    <pre>
+    <code id="four" style="display:none;font-size: 70%;">
+      var values = [1,2,3];
+      d3.selectAll("h2")
+        .data(values).enter()
+        .append("h2")
+        .text(function(d) { return d; });
+    </code>
+    </pre>
   </body>
 </html>

@@ -38,8 +38,10 @@ var w = 1024,
     node, 
     link;
 
+var charger = .14
+
 function charge(d) {
-  return -Math.pow(d.size, 2.0) / 7;
+  return -Math.pow(d.size, 2.0) * charger;
 }
 
 var force = d3.layout.force()
@@ -121,16 +123,16 @@ function step(cur_step) {
 
 // window.onload = function() {
 var gui = new dat.GUI();
-var config = {'gravity':0.1};
+var config = {'charger':0.14};
 // var charger = gui.add(config, "charge", -300, 0);
 // charger.onChange(function(value) {
 //     force.charge(value);
 //     force.start();
 //     });
 
-var graver = gui.add(config, 'gravity', 0, 1);
+var graver = gui.add(config, 'charger', 0, 0.5);
 graver.onChange(function(value) {
-    force.gravity(value);
+    charger = value;
     force.start();
     });
 

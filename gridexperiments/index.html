@@ -259,6 +259,13 @@ var updateFakes = function() {
         fakers.call(updateFakes);
 			});
 
+					grid.init();
+
+					var gridCanvas = vis.append("svg:g").attr("class", "gridcanvas");
+
+					_.each(grid.cells, function(c) {
+						gridCanvas.append("svg:circle").attr("cx", c.x).attr("cy", c.y).attr("r", 2).style("fill", "#555").style("opacity", .3);
+					});
 		</script>
 		<div class="menu">
 			<div>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <link type="text/css" rel="stylesheet" href="../css/style.css"/>
+    <link type="text/css"  rel="stylesheet" href="../js/highlight.js/styles/tomorrow.css">
+    <script type="text/javascript" src="../js/highlight.js/highlight.pack.js"></script>
+    <style type="text/css">
+
+      body {
+        background-image:url(../img/forcelayout.jpg);
+      }
+      
+      h2 {
+        font-size: 24px;
+        position: relative;
+        text-align: left;
+      }
+
+      #area {
+        margin-top: -100px;
+      }
+
+
+
+    </style>
+    <script type="text/javascript" src="../js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="../js/jquery.highlight.js"></script>
+    <script type="text/javascript" src="../js/d3.v3.js"></script>
+    <script type="text/javascript" src="../js/slide.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script type="text/javascript">
+      var substeps = ['one', 'two', 'three', 'code_one'];
+
+      function step(cur_step) {
+        if (cur_step == 'one') {
+          $('code').highlight('values =')
+        } else if(cur_step == 'two') {
+          $('code').unhighlight('values =')
+          $('code').highlight('data')
+
+         } else if(cur_step == 'three') {
+          $('code').unhighlight('data')
+          $('code').highlight('text')
+         } else if(cur_step == 'code_one') {
+          var values = [1,2,3];
+          d3.select("#area").selectAll("h1").data(values).enter().append("h1")
+            .text(function(d) {return d; });
+          }
+
+      };
+    </script>
+  </head>
+  <body>
+    <h1>What is the D3.js?</h1>
+    <pre>
+    <code  class="javascript" style="font-size: 100%;margin-top: -80px;">
+      var values = [1,2,3];
+
+      d3.selectAll("h2")
+        .data(values).enter()
+        .append("h2")
+        .text(function(d) { return d; });
+    </code>
+    </pre>
+    <div id = 'area'></div>
+  </body>
+</html>
