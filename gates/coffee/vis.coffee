@@ -199,6 +199,16 @@ $ ->
     if cur_step == 'start'
       chart.start()
       root.display_all()
+    else if cur_step == 'move'
+      view_type = 'year'
+      $('#view_selection a').removeClass('active')
+      $('#view_selection #year').toggleClass('active')
+      root.toggle_view(view_type)
+    else if cur_step == 'remove'
+      view_type = 'all'
+      $('#view_selection a').removeClass('active')
+      $('#view_selection #all').toggleClass('active')
+      root.toggle_view(view_type)
 
   render_vis = (csv) ->
     chart = new BubbleChart csv
