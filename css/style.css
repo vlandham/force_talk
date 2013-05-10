@@ -148,3 +148,7 @@ code.small {
 .close-button {
   display: none;
 }
+
+.dg.a {
+  margin-top: 60px;
+}

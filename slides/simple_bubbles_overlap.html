@@ -120,19 +120,19 @@ function step(cur_step) {
 };
 
 // window.onload = function() {
-var gui = new dat.GUI();
-var config = {'charge':30, 'gravity':0.1};
-var charger = gui.add(config, "charge", -300, 0);
-charger.onChange(function(value) {
-    force.charge(value);
-    force.start();
-    });
-
-var graver = gui.add(config, 'gravity', 0, 1);
-graver.onChange(function(value) {
-    force.gravity(value);
-    force.start();
-    });
+// var gui = new dat.GUI();
+// var config = {'charge':30, 'gravity':0.1};
+// var charger = gui.add(config, "charge", -300, 0);
+// charger.onChange(function(value) {
+//     force.charge(value);
+//     force.start();
+//     });
+// 
+// var graver = gui.add(config, 'gravity', 0, 1);
+// graver.onChange(function(value) {
+//     force.gravity(value);
+//     force.start();
+//     });
 
 // };
 
