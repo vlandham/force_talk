@@ -10,7 +10,7 @@ var parentWindow = window.parent;
 window.onload = setup;
 
 function setup() {
-  src = parentWindow.document.getElementById(window.name).src;
+  // src = parentWindow.document.getElementById(window.name).src;
   // setupCode();
   
   window.onmessage = receiveMessage;
